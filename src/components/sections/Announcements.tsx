@@ -30,15 +30,15 @@ export function Announcements() {
     <div className="bento-card h-full flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <div className="bento-section-title mb-0">Pengumuman</div>
-        <Link to="/pengumuman" className="text-[10px] font-black text-emerald-600 uppercase tracking-widest hover:underline">
+        <Link to="/pengumuman" className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline">
           Lihat Semua
         </Link>
       </div>
       <div className="space-y-4 flex-1">
         {news.slice(0, 2).map((item, idx) => (
-          <div key={idx} className="pb-3 border-b border-slate-100 last:border-0">
-            <div className="text-[10px] text-secondary font-bold uppercase mb-1">{item.date}</div>
-            <div className="text-sm font-bold text-slate-900 leading-tight">{item.title}</div>
+          <div key={idx} className="pb-3 border-b-2 border-primary/20 last:border-0">
+            <div className="text-[10px] text-accent font-black uppercase tracking-widest mb-1">{item.date}</div>
+            <div className="text-sm font-black text-white leading-tight uppercase tracking-tighter">{item.title}</div>
           </div>
         ))}
       </div>

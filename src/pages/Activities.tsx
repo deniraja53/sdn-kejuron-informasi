@@ -82,21 +82,21 @@ export default function ActivitiesPage() {
     <div className="container mx-auto px-4 md:px-6 py-24 space-y-12">
       {/* Header */}
       <section className="text-center space-y-4">
-        <h1 className="text-4xl font-black text-slate-900">Kegiatan Sekolah</h1>
-        <p className="text-slate-500 max-w-2xl mx-auto">Berbagai aktivitas seru dan edukatif yang mendukung tumbuh kembang siswa di SDN KEJURON.</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white">Kegiatan Sekolah</h1>
+        <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Berbagai aktivitas seru dan edukatif yang mendukung tumbuh kembang siswa di SDN KEJURON.</p>
       </section>
 
       {/* Filter */}
       <div className="flex flex-wrap items-center justify-center gap-2">
         {categories.map(cat => (
-          <Button
-            key={cat}
-            variant={activeCategory === cat ? 'default' : 'outline'}
-            onClick={() => setActiveCategory(cat)}
-            className={`rounded-full px-6 transition-all ${activeCategory === cat ? 'bg-emerald-600 shadow-lg shadow-emerald-200' : 'hover:border-emerald-400'}`}
-          >
-            {cat}
-          </Button>
+            <Button
+              key={cat}
+              variant={activeCategory === cat ? 'default' : 'outline'}
+              onClick={() => setActiveCategory(cat)}
+              className={`rounded-full px-6 transition-all ${activeCategory === cat ? 'bg-emerald-600 dark:bg-pink-600 text-white shadow-lg shadow-emerald-200 dark:shadow-pink-900/20' : 'dark:border-slate-700 dark:text-slate-400 hover:border-emerald-400 dark:hover:border-pink-500'}`}
+            >
+              {cat}
+            </Button>
         ))}
       </div>
 
@@ -147,21 +147,21 @@ export default function ActivitiesPage() {
                   </Badge>
                 </div>
               </div>
-              <div className="p-6 space-y-4">
-                <div className="flex items-center gap-2 text-xs font-bold text-secondary uppercase tracking-wider">
+              <div className="p-6 space-y-4 bg-white dark:bg-slate-800">
+                <div className="flex items-center gap-2 text-xs font-bold text-secondary dark:text-pink-500 uppercase tracking-wider">
                   <Calendar className="w-3.5 h-3.5" />
                   {activity.date}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-pink-400 transition-colors">
                   {activity.title}
                 </h3>
-                <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
                   {activity.desc}
                 </p>
                 <Button 
                   onClick={() => setSelectedActivity(activity)}
                   variant="ghost" 
-                  className="w-full justify-between group/btn hover:bg-emerald-50 text-emerald-600 font-bold rounded-xl"
+                  className="w-full justify-between group/btn hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl"
                 >
                   Selengkapnya
                   <motion.div whileHover={{ x: 5 }} className="transition-transform group-hover/btn:translate-x-1">
@@ -202,52 +202,52 @@ export default function ActivitiesPage() {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="p-8 space-y-6 bg-white">
+              <div className="p-8 space-y-6 bg-white dark:bg-slate-800">
                 <div className="flex flex-wrap gap-6">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+                    <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
                       <Calendar className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Waktu</div>
-                      <div className="text-sm font-bold text-slate-900">{selectedActivity.date}</div>
+                      <div className="text-sm font-bold text-slate-900 dark:text-white">{selectedActivity.date}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-pink-50 text-pink-600">
+                    <div className="p-2 rounded-xl bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Status</div>
-                      <div className="text-sm font-bold text-slate-900">Aktif</div>
+                      <div className="text-sm font-bold text-slate-900 dark:text-white">Aktif</div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="space-y-4">
-                  <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-emerald-600 dark:bg-pink-600 rounded-full" />
                     Deskripsi Detail
                   </h4>
-                  <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <p className="text-slate-600 leading-relaxed text-base">
+                  <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-700">
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
                       {selectedActivity.detail}
                     </p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 flex items-start gap-3">
-                      <Info className="w-5 h-5 text-emerald-600 mt-0.5" />
+                    <div className="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 flex items-start gap-3">
+                      <Info className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5" />
                       <div>
-                        <p className="text-sm font-bold text-emerald-900">Manfaat Kegiatan</p>
-                        <p className="text-xs text-emerald-700">Mendukung pengembangan karakter, kreativitas, dan kompetensi siswa secara holistik.</p>
+                        <p className="text-sm font-bold text-emerald-900 dark:text-emerald-300">Manfaat Kegiatan</p>
+                        <p className="text-xs text-emerald-700 dark:text-emerald-500">Mendukung pengembangan karakter, kreativitas, dan kompetensi siswa secara holistik.</p>
                       </div>
                     </div>
-                    <div className="p-4 rounded-2xl bg-pink-50/50 border border-pink-100 flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-pink-600 mt-0.5" />
+                    <div className="p-4 rounded-2xl bg-pink-50/50 dark:bg-pink-900/20 border border-pink-100 dark:border-pink-800 flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                       <div>
-                        <p className="text-sm font-bold text-pink-900">Lokasi</p>
-                        <p className="text-xs text-pink-700">Area Kampus SDN KEJURON (Ruang Kelas, Lab, atau Lapangan Sekolah).</p>
+                        <p className="text-sm font-bold text-pink-900 dark:text-pink-300">Lokasi</p>
+                        <p className="text-xs text-pink-700 dark:text-pink-500">Area Kampus SDN KEJURON (Ruang Kelas, Lab, atau Lapangan Sekolah).</p>
                       </div>
                     </div>
                   </div>

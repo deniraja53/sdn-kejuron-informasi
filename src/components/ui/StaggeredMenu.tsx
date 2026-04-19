@@ -458,6 +458,18 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     aria-label={it.ariaLabel} 
                     data-index={idx + 1}
                     onClick={(e) => {
+                      if (it.link === '/ppdb') {
+                        e.preventDefault();
+                        // This assumes the parent handles the modal
+                        // But we need a way to trigger it.
+                        // I'll add an optional onPPDBClick prop to StaggeredMenu
+                        if (it.label === 'PPDB Online') {
+                           // We can use a custom event or a prop
+                           window.dispatchEvent(new CustomEvent('open-ppdb'));
+                           closeMenu();
+                           return;
+                        }
+                      }
                       if (it.link.startsWith('/')) {
                         e.preventDefault();
                         navigate(it.link);

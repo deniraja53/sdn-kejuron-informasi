@@ -47,21 +47,21 @@ export default function ProfilePage() {
     <div className="container mx-auto px-4 md:px-6 py-24 space-y-12">
       {/* Header */}
       <section className="text-center space-y-4">
-        <h1 className="text-4xl font-black text-slate-900">Profil Sekolah</h1>
-        <p className="text-slate-500 max-w-2xl mx-auto">Mengenal lebih dekat SDN KEJURON, tempat di mana masa depan dibangun dengan dedikasi dan inovasi.</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white">Profil Sekolah</h1>
+        <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Mengenal lebih dekat SDN KEJURON, tempat di mana masa depan dibangun dengan dedikasi dan inovasi.</p>
       </section>
 
       {/* Sejarah */}
       <section className="bento-card">
         <div className="flex items-center gap-3 mb-6">
-          <History className="w-6 h-6 text-emerald-600" />
-          <h2 className="text-2xl font-bold text-slate-900">Sejarah Sekolah</h2>
+          <History className="w-6 h-6 text-emerald-600 dark:text-pink-500" />
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Sejarah Sekolah</h2>
         </div>
-        <div className="prose prose-slate max-w-none">
-          <p className="text-slate-700 leading-relaxed">
+        <div className="prose prose-slate dark:prose-invert max-w-none">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
             Didirikan pada tahun 2010, SDN KEJURON lahir dari visi untuk menciptakan sekolah dasar yang tidak hanya fokus pada akademik, tetapi juga pada penguasaan teknologi sejak dini. Berawal dari sebuah gedung kecil dengan 30 siswa, kini kami telah berkembang menjadi salah satu sekolah dasar unggulan yang melayani lebih dari 800 siswa dengan fasilitas kelas dunia.
           </p>
-          <p className="text-slate-700 leading-relaxed mt-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mt-4">
             Selama lebih dari satu dekade, kami terus berinovasi dalam kurikulum dan metode pengajaran, mengintegrasikan teknologi EdTech ke dalam setiap aspek pembelajaran tanpa melupakan pembentukan karakter dan nilai-nilai moral yang luhur.
           </p>
         </div>
@@ -72,13 +72,13 @@ export default function ProfilePage() {
         {visionMission.map((item, idx) => (
           <div key={idx} className="bento-card">
             <div className="mb-4">{item.icon}</div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-            {item.description && <p className="text-slate-700 leading-relaxed">{item.description}</p>}
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{item.title}</h3>
+            {item.description && <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{item.description}</p>}
             {item.points && (
               <ul className="space-y-2">
                 {item.points.map((point, pIdx) => (
-                  <li key={pIdx} className="flex items-start gap-2 text-slate-700">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" />
+                  <li key={pIdx} className="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-pink-500 mt-2 flex-shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -92,31 +92,31 @@ export default function ProfilePage() {
       <section className="bento-card">
         <div className="flex items-center gap-3 mb-8">
           <Users className="w-6 h-6 text-pink-600" />
-          <h2 className="text-2xl font-bold text-slate-900">Struktur Organisasi</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Struktur Organisasi</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-3 flex justify-center">
-            <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-center w-64">
-              <div className="font-bold text-slate-900">Drs. Ahmad Subarjo, M.Pd</div>
-              <div className="text-xs text-emerald-600 font-bold uppercase">Kepala Sekolah</div>
+            <div className="bg-emerald-50 dark:bg-emerald-900/30 border-2 border-emerald-200 dark:border-emerald-800 rounded-2xl p-6 text-center w-64">
+              <div className="font-bold text-slate-900 dark:text-white">Drs. Ahmad Subarjo, M.Pd</div>
+              <div className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase">Kepala Sekolah</div>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center w-full">
-              <div className="font-bold text-slate-900">Siti Aminah, S.Pd</div>
-              <div className="text-xs text-slate-500 font-bold uppercase">Waka Kurikulum</div>
+            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center w-full">
+              <div className="font-bold text-slate-900 dark:text-white">Siti Aminah, S.Pd</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase">Waka Kurikulum</div>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center w-full">
-              <div className="font-bold text-slate-900">Budi Santoso, S.Kom</div>
-              <div className="text-xs text-slate-500 font-bold uppercase">Waka Kesiswaan</div>
+            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center w-full">
+              <div className="font-bold text-slate-900 dark:text-white">Budi Santoso, S.Kom</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase">Waka Kesiswaan</div>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center w-full">
-              <div className="font-bold text-slate-900">Larasati, M.Psi</div>
-              <div className="text-xs text-slate-500 font-bold uppercase">Waka Sarana Prasarana</div>
+            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center w-full">
+              <div className="font-bold text-slate-900 dark:text-white">Larasati, M.Psi</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase">Waka Sarana Prasarana</div>
             </div>
           </div>
         </div>
@@ -125,22 +125,22 @@ export default function ProfilePage() {
       {/* Fasilitas */}
       <section className="space-y-6">
         <div className="flex items-center gap-3">
-          <Building2 className="w-6 h-6 text-emerald-600" />
-          <h2 className="text-2xl font-bold text-slate-900">Fasilitas Sekolah</h2>
+          <Building2 className="w-6 h-6 text-emerald-600 dark:text-pink-500" />
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Fasilitas Sekolah</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {facilities.map((facility, idx) => (
             <motion.div 
               key={idx} 
               whileHover={{ y: -5 }}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+              className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all"
             >
               <div className="h-40 overflow-hidden">
                 <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div className="p-5">
-                <h3 className="font-bold text-slate-900 mb-2">{facility.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{facility.desc}</p>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-2">{facility.title}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{facility.desc}</p>
               </div>
             </motion.div>
           ))}

@@ -1,7 +1,5 @@
 import { motion } from 'motion/react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Linkedin, Twitter, Mail, ArrowRight } from 'lucide-react';
+import { Mail, Instagram, MessageCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const teachers = [
@@ -9,57 +7,52 @@ const teachers = [
     name: 'Drs. Ahmad Subarjo, M.Pd',
     role: 'Kepala Sekolah',
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop',
-    specialty: 'Manajemen Pendidikan'
+    bio: 'Memimpin dengan visi teknologi.'
   },
   {
     name: 'Hendra Wijaya, S.Pd',
     role: 'Guru Kelas 6',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop',
-    specialty: 'Wali Kelas 6'
-  },
-  {
-    name: 'Siti Aminah, S.Pd',
-    role: 'Guru Kelas 5',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop',
-    specialty: 'Wali Kelas 5'
-  },
-  {
-    name: 'Budi Santoso, S.Pd',
-    role: 'Guru Kelas 4',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop',
-    specialty: 'Wali Kelas 4'
+    bio: 'Dedikasi untuk prestasi siswa.'
   }
 ];
 
 export function Teachers() {
   return (
     <div className="bento-card h-full flex flex-col">
-      <div className="flex items-center justify-between mb-4">
-        <div className="bento-section-title mb-0">Guru & Pengajar</div>
-        <Link to="/guru" className="text-[10px] font-black text-emerald-600 uppercase tracking-widest hover:underline flex items-center gap-1">
-          Lihat Semua <ArrowRight className="w-3 h-3" />
+      <div className="flex items-center justify-between mb-6">
+        <div className="bento-section-title mb-0">Guru Unggulan</div>
+        <Link to="/guru" className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline flex items-center gap-1">
+          Semua Guru <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
       
-      <div className="flex flex-row items-center gap-6 flex-1">
-        <div className="flex-1">
-          <h3 className="text-lg font-bold text-slate-900 leading-tight">42 Tenaga Pendidik</h3>
-          <p className="text-[11px] text-muted-foreground mt-1">Profesional, Ramah, & Bersertifikasi</p>
-        </div>
-        <div className="flex -space-x-3">
-          {teachers.map((teacher, idx) => (
-            <motion.div 
-              key={idx} 
-              whileHover={{ scale: 1.1, zIndex: 10 }}
-              className="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-200 shadow-sm cursor-pointer hover:border-emerald-500 transition-colors"
-            >
-              <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-            </motion.div>
-          ))}
-          <Link to="/guru" className="w-12 h-12 rounded-full border-2 border-white bg-emerald-600 flex items-center justify-center text-[10px] font-bold text-white hover:bg-emerald-700 transition-colors">
-            +38
-          </Link>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+        {teachers.map((teacher, idx) => (
+          <div key={idx} className="flex flex-col gap-3 p-4 rounded-2xl bg-black/40 border-2 border-primary/20 group hover:border-primary/40 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl overflow-hidden shadow-md border-2 border-primary/30">
+                <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
+              </div>
+              <div>
+                <div className="text-sm font-black text-white leading-tight uppercase tracking-tighter">{teacher.name}</div>
+                <div className="text-[10px] font-black text-primary uppercase tracking-widest">{teacher.role}</div>
+              </div>
+            </div>
+            <p className="text-[11px] text-slate-300 italic font-medium">"{teacher.bio}"</p>
+            <div className="flex items-center gap-2 pt-2 border-t-2 border-primary/20">
+              <button className="p-1.5 rounded-lg bg-slate-950 text-slate-400 hover:text-primary transition-colors border-2 border-primary/10" title="WhatsApp">
+                <MessageCircle className="w-3.5 h-3.5" />
+              </button>
+              <button className="p-1.5 rounded-lg bg-slate-950 text-slate-400 hover:text-primary transition-colors border-2 border-primary/10" title="Instagram">
+                <Instagram className="w-3.5 h-3.5" />
+              </button>
+              <button className="p-1.5 rounded-lg bg-slate-950 text-slate-400 hover:text-primary transition-colors border-2 border-primary/10" title="Email">
+                <Mail className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

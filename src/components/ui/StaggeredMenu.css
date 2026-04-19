@@ -136,16 +136,17 @@
   right: 0;
   width: clamp(280px, 40vw, 450px);
   height: 100vh;
-  background: white;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #050505;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
   padding: 120px 3rem 3rem 3rem;
   overflow-y: auto;
   z-index: 10;
   pointer-events: auto;
-  box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+  box-shadow: -10px 0 50px rgba(0,0,0,0.5);
+  border-left: 2px solid rgba(255, 0, 127, 0.3);
 }
 
 [data-position='left'] .staggered-menu-panel {
@@ -197,7 +198,7 @@
   margin: 0;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #94a3b8;
+  color: #cbd5e1;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -241,7 +242,7 @@
 .sm-socials-link {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #475569;
+  color: #cbd5e1;
   text-decoration: none;
   position: relative;
   padding: 2px 0;
@@ -274,7 +275,7 @@
 
 .sm-panel-item {
   position: relative;
-  color: #1e293b;
+  color: #ffffff;
   font-weight: 800;
   font-size: 1.75rem;
   cursor: pointer;

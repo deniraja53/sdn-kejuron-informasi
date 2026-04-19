@@ -14,11 +14,11 @@ import TeachersPage from '@/pages/Teachers';
 import AnnouncementsPage from '@/pages/Announcements';
 import ContactPage from '@/pages/Contact';
 import FeedbackPage from '@/pages/Feedback';
-import Intro from '@/pages/Intro';
+import LandingPage from '@/pages/Landing';
 
 function AppContent() {
   const location = useLocation();
-  const isIntro = location.pathname === '/';
+  const isLanding = location.pathname === '/';
 
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-emerald-100 selection:text-emerald-900 flex flex-col">
@@ -50,10 +50,10 @@ function AppContent() {
         />
       </div>
 
-      {!isIntro && <Navbar />}
+      {!isLanding && <Navbar />}
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Intro />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profil" element={<ProfilePage />} />
           <Route path="/kegiatan" element={<ActivitiesPage />} />
@@ -65,7 +65,7 @@ function AppContent() {
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
-      {!isIntro && <Footer />}
+      {!isLanding && <Footer />}
     </div>
   );
 }

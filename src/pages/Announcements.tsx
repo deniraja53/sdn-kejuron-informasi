@@ -64,6 +64,8 @@ export default function AnnouncementsPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
+  const [isDetailDialogOpen, setIsDetailDialogOpen] = useState(false);
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState<any>(null);
   const [editingItem, setEditingItem] = useState<any>(null);
   const [notification, setNotification] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -211,18 +213,18 @@ export default function AnnouncementsPage() {
           </Button>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
-          Pengumuman <span className="text-emerald-600">Terbaru</span>
+        <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
+          Pengumuman <span className="text-emerald-600 dark:text-pink-500">Terbaru</span>
         </h1>
-        <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+        <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
           Dapatkan informasi terkini mengenai kegiatan, kebijakan, dan berita penting dari SDN KEJURON.
         </p>
       </section>
 
       {/* Filter & Admin Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-800 p-4 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm">
         <div className="flex items-center gap-2">
-          <Button variant="outline" className="rounded-xl gap-2 border-slate-200">
+          <Button variant="outline" className="rounded-xl gap-2 border-slate-200 dark:border-slate-700 dark:text-slate-300">
             <Filter className="w-4 h-4" />
             Filter Kategori
           </Button>
@@ -235,8 +237,8 @@ export default function AnnouncementsPage() {
                 className={cn(
                   "rounded-xl transition-all",
                   selectedCategory === cat 
-                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-100" 
-                    : "text-slate-600 hover:bg-slate-50"
+                    ? "bg-emerald-600 dark:bg-pink-600 text-white shadow-lg shadow-emerald-100 dark:shadow-pink-900/20" 
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
                 )}
               >
                 {cat}
@@ -273,12 +275,12 @@ export default function AnnouncementsPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="group relative bg-white p-6 md:p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-emerald-100 transition-all"
+              className="group relative bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-emerald-100 dark:hover:border-pink-500 transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-6">
                 {/* Date Box */}
-                <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-slate-50 flex flex-col items-center justify-center border border-slate-100 group-hover:bg-emerald-50 group-hover:border-emerald-100 transition-colors">
-                  <span className="text-2xl font-black text-slate-900 group-hover:text-emerald-600">
+                <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center border border-slate-100 dark:border-slate-700 group-hover:bg-emerald-50 dark:group-hover:bg-pink-900/30 group-hover:border-emerald-100 dark:group-hover:border-pink-500 transition-colors">
+                  <span className="text-2xl font-black text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-pink-400">
                     {new Date(item.date).getDate()}
                   </span>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -328,15 +330,22 @@ export default function AnnouncementsPage() {
                     )}
                   </div>
 
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-pink-400 transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-500 leading-relaxed max-w-3xl">
+                  <p className="text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl">
                     {item.description}
                   </p>
 
-                  <Button variant="link" className="p-0 h-auto text-emerald-600 font-bold gap-2 group/btn">
+                  <Button 
+                    variant="link" 
+                    onClick={() => {
+                      setSelectedAnnouncement(item);
+                      setIsDetailDialogOpen(true);
+                    }}
+                    className="p-0 h-auto text-emerald-600 dark:text-pink-500 font-bold gap-2 group/btn"
+                  >
                     Baca Selengkapnya
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>
@@ -509,6 +518,161 @@ export default function AnnouncementsPage() {
               </Button>
             </DialogFooter>
           </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Announcement Detail Dialog */}
+      <Dialog open={isDetailDialogOpen} onOpenChange={setIsDetailDialogOpen}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden border-none shadow-[0_0_100px_rgba(16,185,129,0.2)] bg-white dark:bg-slate-950 text-slate-900 dark:text-white h-[100dvh] sm:h-auto sm:max-h-[90vh] sm:rounded-[3rem]">
+          {selectedAnnouncement && (
+            <div className="flex flex-col h-full overscroll-none">
+              {/* Header Banner */}
+              <div className="relative flex-shrink-0 min-h-[250px] sm:min-h-[350px] bg-gradient-to-br from-emerald-600 via-emerald-800 to-slate-900 overflow-hidden flex flex-col justify-end p-6 sm:p-12 md:p-16">
+                {/* Abstract Pattern Overlay */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+                <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl animate-pulse" />
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="relative z-10 space-y-4"
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge className={cn(
+                      "rounded-full px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] border-none shadow-xl", 
+                      selectedAnnouncement.type === 'Penting' ? "bg-red-500 text-white animate-bounce" : "bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                    )}>
+                      {selectedAnnouncement.type}
+                    </Badge>
+                    <Badge variant="outline" className="rounded-full px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] border-white/20 text-white backdrop-blur-md bg-white/5">
+                      {selectedAnnouncement.category}
+                    </Badge>
+                  </div>
+                  <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] uppercase tracking-tighter italic drop-shadow-2xl">
+                    {selectedAnnouncement.title}
+                  </h2>
+                </motion.div>
+
+                {/* Cyber Close Button */}
+                <Button
+                  onClick={() => setIsDetailDialogOpen(false)}
+                  className="absolute top-4 right-4 sm:top-8 sm:right-8 z-50 w-10 h-10 sm:w-16 sm:h-16 rounded-2xl bg-black/40 backdrop-blur-2xl text-white hover:bg-emerald-600 transition-all border-2 border-white/10 hover:border-transparent group/close shadow-2xl"
+                >
+                  <X className="w-5 h-5 sm:w-8 sm:h-8 group-hover:rotate-180 transition-transform duration-500" />
+                </Button>
+              </div>
+              
+              <div className="flex-1 overflow-y-auto custom-scrollbar bg-white dark:bg-slate-950 px-6 py-8 sm:p-12 md:p-16 relative">
+                <div className="max-w-3xl mx-auto space-y-8 sm:space-y-12">
+                  {/* Meta Information Cards (Bento Style) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600">
+                        <Calendar className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Tanggal Rilis</p>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white">
+                          {new Date(selectedAnnouncement.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                        <Bell className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Status Prioritas</p>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white">Informasi {selectedAnnouncement.type}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* High Quality Typography Body */}
+                  <div className="space-y-8">
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-slate-700 dark:text-slate-200 text-lg md:text-2xl leading-relaxed font-semibold tracking-tight"
+                    >
+                      {selectedAnnouncement.description}
+                    </motion.div>
+
+                    {/* Detailed Content Placeholder (Simulating More Detail) */}
+                    <div className="space-y-4 pt-4">
+                      <h3 className="text-sm font-black uppercase tracking-[0.3em] text-emerald-600">Instruksi & Detail</h3>
+                      <ul className="space-y-3">
+                        {['Seluruh siswa diharapkan untuk memperhatikan jadwal yang telah ditentukan.', 'Orang tua/wali murid dapat melakukan koordinasi dengan pihak sekolah.', 'Informasi lebih lengkap dapat ditanyakan kepada Sekretariat Sekolah. '].map((point, idx) => (
+                          <li key={idx} className="flex gap-3 text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                            <div className="w-2 h-2 rounded-full bg-emerald-400 mt-2 flex-shrink-0" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Compliance & Verification Panel */}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="p-8 sm:p-10 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900/80 dark:to-slate-950 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 relative overflow-hidden group shadow-xl"
+                    >
+                      <div className="absolute top-0 right-0 p-8 opacity-[0.03] rotate-12 group-hover:scale-110 transition-transform">
+                        <Save className="w-48 h-48" />
+                      </div>
+                      
+                      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div className="space-y-4">
+                          <h4 className="text-[10px] font-black text-emerald-600 dark:text-emerald-500 uppercase tracking-[0.5em] flex items-center gap-3">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                            Electronic Official Verification
+                          </h4>
+                          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl font-medium">
+                            Dokumen ini diterbitkan oleh <span className="text-slate-900 dark:text-white font-bold">Bagian Humas SDN KEJURON</span>. 
+                            Setiap informasi bersifat mengikat dan resmi untuk seluruh ekosistem sekolah.
+                          </p>
+                        </div>
+                        <div className="flex-shrink-0 flex items-center gap-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
+                          <div className="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600">
+                            <Filter className="w-5 h-5 font-black" />
+                          </div>
+                          <div>
+                            <p className="text-[8px] font-black uppercase text-slate-400">Diverifikasi oleh</p>
+                            <p className="text-xs font-bold text-slate-900 dark:text-white">Admin Sekolah</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Bottom Action Footer */}
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-slate-100 dark:border-slate-800 gap-6"
+                  >
+                    <div className="flex items-center gap-3 text-slate-400">
+                      <div className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                        <X className="w-3 h-3" />
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-widest leading-none">End of Document</span>
+                    </div>
+                    <Button 
+                      onClick={() => setIsDetailDialogOpen(false)}
+                      className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white rounded-2xl px-12 h-16 font-black uppercase tracking-[0.3em] text-[10px] shadow-[0_20px_50px_rgba(16,185,129,0.2)] transition-all active:scale-95 group/btn"
+                    >
+                      Konfirmasi Selesai
+                      <ArrowRight className="ml-4 w-5 h-5 transition-transform group-hover/btn:translate-x-2" />
+                    </Button>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>

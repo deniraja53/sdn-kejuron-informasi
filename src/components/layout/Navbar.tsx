@@ -3,6 +3,8 @@ import { useLocation, Link } from 'react-router-dom';
 import { StaggeredMenu } from '@/components/ui/StaggeredMenu';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Moon, Sun } from 'lucide-react';
+import { PPDBModal } from '@/components/ui/PPDBModal';
 
 const navItems = [
   { label: 'Beranda', ariaLabel: 'Go to home page', link: '/home' },
@@ -23,6 +25,7 @@ const socialItems = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isPPDBOpen, setIsPPDBOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -30,7 +33,17 @@ export function Navbar() {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Ensure dark mode is always active for cyberpunk theme
+    document.documentElement.classList.add('dark');
+
+    const handleOpenPPDB = () => setIsPPDBOpen(true);
+    window.addEventListener('open-ppdb', handleOpenPPDB);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('open-ppdb', handleOpenPPDB);
+    };
   }, []);
 
   return (
@@ -38,8 +51,8 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[70px]',
         scrolled 
-          ? 'bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm' 
-          : 'bg-white border-b border-slate-100'
+          ? 'bg-black/90 backdrop-blur-md border-b-2 border-primary/40 shadow-[0_0_20px_rgba(255,0,127,0.1)]' 
+          : 'bg-black border-b-2 border-primary/20'
       )}
     >
       <StaggeredMenu
@@ -47,12 +60,12 @@ export function Navbar() {
         items={navItems}
         socialItems={socialItems}
         displaySocials={true}
-        displayItemNumbering={true}
-        menuButtonColor="#1e293b"
-        openMenuButtonColor="#1e293b"
+        displayItemNumbering={false}
+        menuButtonColor="#ffffff"
+        openMenuButtonColor="#ffffff"
         changeMenuColorOnOpen={true}
-        colors={['#059669', '#be185d', '#db2777']}
-        accentColor="#059669"
+        colors={['#ff007f', '#9d00ff', '#00f3ff']}
+        accentColor="#00f3ff"
         isFixed={false}
       />
 
@@ -68,14 +81,20 @@ export function Navbar() {
                 key={item.label}
                 to={item.link}
                 className={cn(
-                  "text-[13px] font-bold transition-colors",
-                  location.pathname === item.link ? "text-emerald-600" : "text-slate-800 hover:text-emerald-600"
+                  "text-[13px] font-black uppercase tracking-widest transition-colors",
+                  location.pathname === item.link 
+                    ? "text-primary shadow-[0_0_10px_rgba(255,0,127,0.5)]" 
+                    : "text-slate-300 hover:text-primary"
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <Button className="ml-4 bg-pink-600 hover:bg-pink-700 rounded-xl px-6 h-10 shadow-lg shadow-pink-200 text-xs font-bold">
+            
+            <Button 
+              onClick={() => setIsPPDBOpen(true)}
+              className="ml-4 bg-primary hover:bg-primary/80 rounded-xl px-6 h-10 shadow-[0_0_20px_rgba(255,0,127,0.4)] text-xs font-black uppercase tracking-widest pointer-events-auto"
+            >
               PPDB Online
             </Button>
           </div>
@@ -84,6 +103,8 @@ export function Navbar() {
           <div className="w-24" />
         </div>
       </div>
+
+      <PPDBModal isOpen={isPPDBOpen} onOpenChange={setIsPPDBOpen} />
     </nav>
   );
 }

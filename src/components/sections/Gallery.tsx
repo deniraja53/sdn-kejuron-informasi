@@ -25,37 +25,37 @@ export function Gallery() {
           <div 
             key={idx} 
             onClick={() => setSelectedImage(img)}
-            className="aspect-square rounded-lg overflow-hidden group cursor-pointer relative"
+            className="aspect-square rounded-lg overflow-hidden group cursor-pointer relative border-2 border-primary/20 hover:border-primary/50 transition-all"
           >
             <img 
               src={img.url} 
               alt={img.alt} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-              <Maximize2 className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
+              <Maximize2 className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
             </div>
           </div>
         ))}
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl bg-transparent">
+        <DialogContent className="max-w-4xl p-0 overflow-hidden rounded-[1.5rem] border-2 border-primary/30 shadow-[0_0_50px_rgba(255,0,127,0.3)] bg-black">
           {selectedImage && (
             <div className="relative group">
               <img 
                 src={selectedImage.url} 
                 alt={selectedImage.alt} 
-                className="w-full h-auto max-h-[80vh] object-contain rounded-[2rem]"
+                className="w-full h-auto max-h-[80vh] object-contain"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute bottom-6 left-6 right-6 bg-black/40 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-                <p className="text-white font-bold text-center">{selectedImage.alt}</p>
+              <div className="absolute bottom-6 left-6 right-6 bg-black/60 backdrop-blur-md p-4 rounded-2xl border-2 border-primary/30">
+                <p className="text-white font-black uppercase tracking-widest text-center text-sm">{selectedImage.alt}</p>
               </div>
               <button 
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-black/60 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-primary/40 transition-colors border-2 border-white/20"
               >
                 <X className="w-6 h-6" />
               </button>
