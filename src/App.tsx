@@ -15,6 +15,7 @@ import AnnouncementsPage from '@/pages/Announcements';
 import ContactPage from '@/pages/Contact';
 import FeedbackPage from '@/pages/Feedback';
 import LandingPage from '@/pages/Landing';
+import AboutUsPage from '@/pages/AboutUs';
 
 function AppContent() {
   const location = useLocation();
@@ -55,6 +56,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/tentang-kami" element={<AboutUsPage />} />
           <Route path="/profil" element={<ProfilePage />} />
           <Route path="/kegiatan" element={<ActivitiesPage />} />
           <Route path="/guru" element={<TeachersPage />} />

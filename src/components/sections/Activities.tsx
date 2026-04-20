@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code, Palette, Music, Trophy, Microscope, Globe, X, Info, Calendar } from 'lucide-react';
+import { Code, Palette, Music, Trophy, Microscope, Globe, X, Info, Calendar, ArrowRight } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -78,139 +78,159 @@ export function Activities() {
       </div>
 
       <Dialog open={!!selectedActivity} onOpenChange={(open) => !open && setSelectedActivity(null)}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden border-none shadow-[0_0_100px_rgba(255,0,127,0.3)] bg-black sm:rounded-[3rem] h-[100dvh] sm:h-auto sm:max-h-[90vh]">
+        <DialogContent className="max-w-5xl p-0 overflow-hidden border-none shadow-[0_0_80px_rgba(255,0,127,0.15)] bg-slate-950 sm:rounded-[2.5rem] h-[100dvh] sm:h-auto sm:max-h-[92vh]">
           {selectedActivity && (
-            <div className="flex flex-col h-full overscroll-none">
-              {/* Massive Hero Section */}
-              <div className="relative flex-shrink-0 h-[40vh] sm:h-[450px] overflow-hidden">
+            <div className="flex flex-col h-full bg-slate-950">
+              {/* Premium Hero Header */}
+              <div className="relative flex-shrink-0 h-[30vh] sm:h-[480px] overflow-hidden group/hero">
                 <motion.img 
-                  initial={{ scale: 1.2, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
+                  initial={{ scale: 1.1, filter: 'blur(10px)', opacity: 0 }}
+                  animate={{ scale: 1, filter: 'blur(0px)', opacity: 1 }}
+                  transition={{ duration: 1, ease: "easeOut" }}
                   src={selectedActivity.image} 
                   alt={selectedActivity.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale md:grayscale-0"
                   referrerPolicy="no-referrer"
                 />
                 
-                {/* Dynamic Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+                {/* Advanced Light Leak Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-accent/10 opacity-40" />
                 
-                {/* Floating Content */}
-                <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-[85%] sm:max-w-[80%]">
+                {/* Content Overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-14 md:p-20">
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="space-y-4 sm:space-y-6"
                   >
-                    <Badge className="bg-primary text-white border-none font-black uppercase tracking-[0.3em] px-4 sm:px-5 py-1.5 sm:py-2 mb-3 sm:mb-4 text-[9px] sm:text-[10px] shadow-[0_0_30px_rgba(255,0,127,0.6)] animate-pulse">
-                      {selectedActivity.category}
-                    </Badge>
-                    <h2 className="text-xl sm:text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-tight sm:leading-[0.9] italic mb-2 drop-shadow-2xl">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-primary shadow-2xl">
+                        {selectedActivity.icon}
+                      </div>
+                      <Badge className="bg-primary/90 text-white border-none font-bold uppercase tracking-[0.2em] px-4 py-1.5 text-[9px] md:text-[11px] shadow-lg">
+                        {selectedActivity.category}
+                      </Badge>
+                    </div>
+                    <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none italic drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
                       {selectedActivity.title}
                     </h2>
                   </motion.div>
                 </div>
 
-                {/* Cyber Close Button */}
+                {/* Precision Close Button */}
                 <Button
                   onClick={() => setSelectedActivity(null)}
-                  className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 w-10 h-10 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-2xl text-white hover:bg-primary transition-all border-2 border-white/20 hover:border-transparent group/close shadow-2xl"
+                  className="absolute top-6 right-6 sm:top-10 sm:right-10 z-50 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/60 backdrop-blur-xl text-white hover:bg-primary transition-all border border-white/10 group/close"
                 >
-                  <X className="w-5 h-5 sm:w-8 sm:h-8 group-hover:rotate-180 transition-transform duration-500" />
+                  <X className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
                 </Button>
               </div>
 
-              {/* Responsive Content Area */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar bg-black relative p-6 md:p-14">
-                <div className="max-w-3xl mx-auto space-y-12">
+              {/* Document-style Content Area */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar bg-slate-950 px-8 py-10 sm:px-14 sm:py-16 md:px-20 relative">
+                <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
                   
-                  {/* Grid Stats */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                  >
-                    <div className="group bg-slate-950 p-8 rounded-[2.5rem] border-2 border-white/5 hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,0,127,0.1)]">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                          <Calendar className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">Timeline / Schedule</span>
+                  {/* Clean Info Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="space-y-4"
+                    >
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-3">
+                        <Calendar className="w-3 h-3" />
+                        Jadwal & Waktu
+                      </h4>
+                      <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-primary/20 transition-colors group">
+                        <p className="text-xl md:text-2xl text-white font-bold tracking-tight mb-2">Selasa & Kamis</p>
+                        <p className="text-sm font-mono text-slate-500 group-hover:text-primary transition-colors">14.00 — 16.00 WIB</p>
                       </div>
-                      <p className="text-2xl text-white font-black uppercase tracking-tight">Setiap Selasa & Kamis</p>
-                      <p className="text-sm font-mono text-primary mt-2 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
-                        14:00 — 16:00 WIB
-                      </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="group bg-slate-950 p-8 rounded-[2.5rem] border-2 border-white/5 hover:border-accent/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,255,0.1)]">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent border border-accent/20">
-                          <Trophy className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">Eligibility / Target</span>
+                    <motion.div 
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="space-y-4"
+                    >
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-accent/60 flex items-center gap-3">
+                        <Trophy className="w-3 h-3" />
+                        Sasaran Peserta
+                      </h4>
+                      <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-accent/20 transition-colors group">
+                        <p className="text-xl md:text-2xl text-white font-bold tracking-tight mb-2">Kelas 4, 5, 6</p>
+                        <p className="text-sm font-mono text-slate-500 group-hover:text-accent transition-colors">Program Unggulan Sekolah</p>
                       </div>
-                      <p className="text-2xl text-white font-black uppercase tracking-tight">Siswa Kelas 4 - 6</p>
-                      <p className="text-sm font-mono text-accent mt-2">Peminatan Khusus Sekolah</p>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
 
-                  {/* Editorial Description */}
+                  {/* Main Description */}
                   <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="relative"
+                    className="space-y-8"
                   >
-                    <div className="absolute -left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-transparent opacity-30 hidden md:block" />
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-600 mb-8 flex items-center gap-4">
-                      <span className="w-12 h-px bg-slate-800" />
-                      Detailed Overview
-                    </h4>
-                    <p className="text-xl md:text-3xl text-slate-300 font-medium leading-[1.3] tracking-tight">
+                    <div className="flex items-center gap-4">
+                      <div className="h-px flex-1 bg-slate-800" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.6em] text-slate-600">Overview Eksklusif</span>
+                      <div className="h-px flex-1 bg-slate-800" />
+                    </div>
+                    <p className="text-xl sm:text-2xl md:text-4xl text-slate-200 font-medium leading-[1.3] text-center md:text-left tracking-tight">
                       {selectedActivity.description}
                     </p>
                   </motion.div>
                   
-                  {/* Warning/Info Box */}
+                  {/* Verification Section */}
                   <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
-                    className="flex items-start gap-6 p-8 rounded-[2rem] bg-slate-900/50 border-2 border-slate-800 text-slate-400"
+                    className="p-10 rounded-[3rem] bg-gradient-to-br from-slate-900 to-slate-950 border border-white/5 relative overflow-hidden group"
                   >
-                    <Info className="w-8 h-8 flex-shrink-0 text-primary mt-1" />
-                    <div className="space-y-2">
-                      <p className="text-xs font-black uppercase tracking-widest text-primary">Informasi Penting:</p>
-                      <p className="text-sm leading-relaxed">
-                        Seluruh peserta didik diwajibkan membawa peralatan dasar sesuai instruksi pembimbing masing-masing. Kegiatan ini dirancang secara profesional untuk mengasah fundamental dan kreativitas tinggi.
-                      </p>
+                    <div className="absolute top-0 right-0 p-10 opacity-[0.02] -rotate-12">
+                      <Code className="w-40 h-40" />
+                    </div>
+                    <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3 text-primary">
+                          <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(255,0,127,1)]" />
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em]">Official Program Notification</span>
+                        </div>
+                        <p className="text-sm text-slate-400 leading-relaxed max-w-xl font-medium">
+                          Kegiatan ini telah disetujui oleh Kepala Sekolah dan merupakan bagian dari kurikulum pengembangan bakat siswa <span className="text-white">SDN KEJURON</span>. Setiap sesi dipandu oleh pembimbing profesional.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-center md:items-end gap-2">
+                        <div className="flex -space-x-4">
+                          {[1,2,3].map(i => (
+                            <div key={i} className="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white">
+                              GTK
+                            </div>
+                          ))}
+                        </div>
+                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-600">3 Pembimbing Terdaftar</span>
+                      </div>
                     </div>
                   </motion.div>
 
-                  {/* Final Action */}
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="flex flex-col md:flex-row items-center justify-between pt-12 gap-8"
-                  >
-                    <div className="text-center md:text-left">
-                      <p className="text-[10px] text-slate-600 font-black uppercase tracking-widest mb-1">Status Pendaftaran</p>
-                      <p className="text-lg text-emerald-500 font-black uppercase tracking-tighter">Terbuka / Silakan Hubungi Wali Kelas</p>
+                  {/* Footer Action Area */}
+                  <div className="flex flex-col md:flex-row items-center justify-between pt-10 border-t border-white/5 gap-8">
+                    <div className="flex items-center gap-4 text-slate-500">
+                      <Info className="w-4 h-4" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">Dokumen Resmi Aktivitas</span>
                     </div>
                     <Button 
                       onClick={() => setSelectedActivity(null)}
-                      className="w-full md:w-auto bg-primary hover:bg-primary/80 text-white rounded-[1.5rem] px-16 h-20 font-black uppercase tracking-[0.2em] text-xs shadow-[0_20px_50px_rgba(255,0,127,0.4)] transition-all active:scale-95 group"
+                      className="w-full md:w-auto bg-white text-black hover:bg-primary hover:text-white rounded-2xl px-16 h-20 font-black uppercase tracking-[0.3em] text-xs transition-all active:scale-95 group/btn shadow-2xl"
                     >
-                      Kembali ke Beranda
-                      <X className="ml-4 w-4 h-4 group-hover:rotate-90 transition-transform" />
+                      Konfirmasi
+                      <ArrowRight className="ml-4 w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
                     </Button>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

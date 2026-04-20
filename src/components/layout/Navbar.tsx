@@ -8,6 +8,7 @@ import { PPDBModal } from '@/components/ui/PPDBModal';
 
 const navItems = [
   { label: 'Beranda', ariaLabel: 'Go to home page', link: '/home' },
+  { label: 'Tentang', ariaLabel: 'Learn about us', link: '/tentang-kami' },
   { label: 'Profil', ariaLabel: 'Learn about school profile', link: '/profil' },
   { label: 'Kegiatan', ariaLabel: 'View school activities', link: '/kegiatan' },
   { label: 'Guru & Tendik', ariaLabel: 'View teachers and staff', link: '/guru' },
