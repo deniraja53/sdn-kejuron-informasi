@@ -1,139 +1,159 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Instagram, MessageCircle, GraduationCap, Search, UserX } from 'lucide-react';
+import { Mail, Instagram, MessageCircle, GraduationCap, Search, UserX, Facebook, Linkedin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 const teachers = [
   {
-    name: 'Drs. Ahmad Subarjo, M.Pd',
+    name: 'Juli Sugianingsih, S.Pd',
     role: 'Kepala Sekolah',
     subject: 'Manajemen Pendidikan',
+    detailedSubjects: ['Kepemimpinan Sekolah', 'Manajemen Mutu', 'Supervisi Pendidikan'],
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Berpengalaman lebih dari 20 tahun dalam memimpin institusi pendidikan dasar.',
+    bio: 'Berpengalaman lebih dari 20 tahun dalam memimpin institusi pendidikan dasar dengan visi global.',
     whatsapp: '6281234567890',
-    instagram: 'ahmad_subarjo',
-    email: 'ahmad@kejuron.sch.id'
+    instagram: 'juli_sugianingsih',
+    facebook: 'juli.sugianingsih',
+    linkedin: 'juli-sugianingsih',
+    email: 'juli@kejuron.sch.id'
   },
   {
-    name: 'Hendra Wijaya, S.Pd',
+    name: 'Angga Wida Witdiyanto, S.Pd',
     role: 'Guru Kelas 6',
     subject: 'Wali Kelas 6',
+    detailedSubjects: ['Matematika', 'IPA', 'PPKn', 'Bahasa Indonesia'],
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Membimbing siswa tingkat akhir untuk persiapan melanjutkan ke jenjang menengah.',
+    bio: 'Membimbing siswa tingkat akhir untuk persiapan matang melanjutkan ke jenjang menengah.',
     whatsapp: '6281234567891',
-    instagram: 'hendra_wijaya',
-    email: 'hendra@kejuron.sch.id'
+    instagram: 'angga_wida',
+    facebook: 'angga.wida.witdiyanto',
+    email: 'angga@kejuron.sch.id'
   },
   {
-    name: 'Siti Aminah, S.Pd',
+    name: 'Agus Wiyono, S.Pd',
     role: 'Guru Kelas 5',
     subject: 'Wali Kelas 5',
+    detailedSubjects: ['Bahasa Inggris Dasar', 'IPS', 'Seni Budaya', 'IPA'],
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop',
-    bio: 'Berdedikasi dalam mengembangkan potensi akademik dan karakter siswa kelas 5.',
+    bio: 'Berdedikasi dalam mengembangkan potensi akademik dan kecerdasan emosional siswa.',
     whatsapp: '6281234567892',
-    instagram: 'siti_aminah',
-    email: 'siti@kejuron.sch.id'
+    instagram: 'agus_wiyono',
+    email: 'agus_w@kejuron.sch.id'
   },
   {
-    name: 'Budi Santoso, S.Pd',
+    name: 'Siti Rahayu, S.Pd',
     role: 'Guru Kelas 4',
     subject: 'Wali Kelas 4',
+    detailedSubjects: ['Matematika Dasar', 'Bahasa Indonesia', 'IPA', 'Prakarya'],
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop',
-    bio: 'Menerapkan metode pembelajaran aktif untuk siswa kelas 4.',
+    bio: 'Menerapkan metode pembelajaran eksploratif untuk menumbuhkan rasa kompetitif positif.',
     whatsapp: '6281234567893',
-    instagram: 'budi_santoso',
-    email: 'budi@kejuron.sch.id'
+    instagram: 'siti_rahayu',
+    facebook: 'siti.rahayu.edu',
+    email: 'siti_r@kejuron.sch.id'
   },
   {
-    name: 'Dewi Lestari, S.Pd',
+    name: 'Natalia Dwi Megasari, S.Pd',
     role: 'Guru Kelas 3',
     subject: 'Wali Kelas 3',
+    detailedSubjects: ['Literasi', 'Numerasi Dasar', 'Seni Musik', 'Budi Pekerti'],
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop',
-    bio: 'Menciptakan suasana belajar yang menyenangkan dan kreatif bagi siswa kelas 3.',
+    bio: 'Menciptakan suasana belajar yang ceria dan penuh warna bagi perkembangan anak.',
     whatsapp: '6281234567894',
-    instagram: 'dewi_lestari',
-    email: 'dewi@kejuron.sch.id'
+    instagram: 'natalia_dwi',
+    email: 'natalia@kejuron.sch.id'
   },
   {
-    name: 'Rina Kartika, S.Pd',
+    name: 'Sutini, S.Pd',
     role: 'Guru Kelas 2',
     subject: 'Wali Kelas 2',
+    detailedSubjects: ['Calistung', 'Dongeng Karakter', 'Olahraga Dasar', 'Seni Rupa'],
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop',
-    bio: 'Fokus pada pengembangan literasi dan numerasi dasar siswa kelas 2.',
+    bio: 'Fokus pada fondasi literasi dan kedisiplinan diri sejak dini.',
     whatsapp: '6281234567895',
-    instagram: 'rina_kartika',
-    email: 'rina@kejuron.sch.id'
+    instagram: 'sutini_teacher',
+    facebook: 'sutini.spd',
+    email: 'sutini@kejuron.sch.id'
   },
   {
-    name: 'Ani Maryani, S.Pd',
+    name: 'Septyarini, S.Pd',
     role: 'Guru Kelas 1',
     subject: 'Wali Kelas 1',
+    detailedSubjects: ['Pengenalan Lingkungan', 'Bahasa Ibu', 'Moral & Etika', 'Bernyanyi'],
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop',
-    bio: 'Membantu transisi siswa dari taman kanak-kanak ke sekolah dasar dengan penuh kasih.',
+    bio: 'Memandu langkah pertama siswa di dunia pendidikan formal dengan kehangatan.',
     whatsapp: '6281234567896',
-    instagram: 'ani_maryani',
-    email: 'ani@kejuron.sch.id'
+    instagram: 'septyarini_spd',
+    email: 'septyarini@kejuron.sch.id'
   },
   {
-    name: 'Agus Setiawan, S.Pd',
+    name: 'Endro Wilarsito, S.Pd',
     role: 'Guru Mapel PJOK',
     subject: 'Pendidikan Jasmani',
+    detailedSubjects: ['Atletik', 'Sepak Bola', 'Senam Irama', 'Kesehatan Remaja'],
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Mengembangkan kebugaran fisik dan sportivitas siswa melalui olahraga.',
+    bio: 'Membangun karakter tangguh dan kerja sama tim melalui aktivitas fisik.',
     whatsapp: '6281234567897',
-    instagram: 'agus_setiawan',
-    email: 'agus@kejuron.sch.id'
+    instagram: 'endro_wilarsito',
+    facebook: 'endro.wilarsito',
+    email: 'endro@kejuron.sch.id'
   },
   {
-    name: 'H. M. Yusuf, S.Ag',
+    name: 'Untari, S.Pd.I',
     role: 'Guru Mapel PAI',
     subject: 'Pendidikan Agama Islam',
+    detailedSubjects: ['Fiqih', 'Aqidah Akhlak', 'Sejarah Kebudayaan Islam', 'BTQ'],
     image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1998&auto=format&fit=crop',
-    bio: 'Membentuk akhlakul karimah dan pemahaman agama Islam yang moderat.',
+    bio: 'Menanamkan nilai-nilai religius yang inklusif dan moderat bagi seluruh siswa.',
     whatsapp: '6281234567898',
-    instagram: 'yusuf_sai',
-    email: 'yusuf@kejuron.sch.id'
+    instagram: 'untari_pai',
+    email: 'untari@kejuron.sch.id'
   },
   {
-    name: 'Christian, S.Th',
+    name: 'Deni Angga Raja, S.Pd.K',
     role: 'Guru Mapel PAK',
     subject: 'Pendidikan Agama Kristen',
+    detailedSubjects: ['Studi Alkitab Junior', 'Etika Kristen', 'Lagu Rohani', 'Pelayanan Kasih'],
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Membimbing kerohanian siswa melalui nilai-nilai kasih dalam ajaran Kristen.',
+    bio: 'Memberikan bimbingan spiritual dengan pendekatan kasih dan kepedulian sosial.',
     whatsapp: '6281234567899',
-    instagram: 'christian_pak',
-    email: 'christian@kejuron.sch.id'
+    instagram: 'deni_angga',
+    email: 'deni@kejuron.sch.id'
   },
   {
-    name: 'Eko Prasetyo, S.Kom',
-    role: 'Tendik Operator',
+    name: 'Nuansa Wamagiska Ferry, S.Sos',
+    role: 'Tendik Administrasi',
     subject: 'Dapodik & Administrasi',
+    detailedSubjects: ['Sistem Informasi', 'Jaringan Dasar', 'Manajemen Data', 'Keamanan Cyber'],
     image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Mengelola data sekolah dan sistem informasi pendidikan dengan akurat.',
+    bio: 'Menjamin akurasi data sekolah serta integritas operasional sistem informasi digital sekolah.',
     whatsapp: '6281234567900',
-    instagram: 'eko_prasetyo',
-    email: 'eko@kejuron.sch.id'
+    instagram: 'nuansa_wa',
+    linkedin: 'nuansa-wamagiska',
+    email: 'nuansa@kejuron.sch.id'
   },
   {
-    name: 'Maya Sari, S.I.Pust',
+    name: 'Agung Baskara',
     role: 'Tendik Perpustakaan',
     subject: 'Manajemen Perpustakaan',
+    detailedSubjects: ['Katalogisasi', 'Literasi Informasi', 'Literasi Digital', 'Storytelling'],
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Meningkatkan minat baca siswa melalui pengelolaan perpustakaan yang modern.',
+    bio: 'Mendedikasikan diri untuk membangun budaya literasi yang kuat dan kritis bagi seluruh siswa.',
     whatsapp: '6281234567901',
-    instagram: 'maya_sari',
-    email: 'maya@kejuron.sch.id'
+    instagram: 'agung_baskara',
+    email: 'agung@kejuron.sch.id'
   },
   {
-    name: 'Pak Jono',
+    name: 'HAMIM',
     role: 'Tendik Kebersihan',
     subject: 'Fasilitas & Lingkungan',
+    detailedSubjects: ['Pemeliharaan Gedung', 'Sanitasi Dasar', 'Taman & Lanskap', 'Logistik Gedung'],
     image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Menjaga kebersihan dan kenyamanan lingkungan sekolah demi kesehatan bersama.',
+    bio: 'Pilar utama di balik kenyamanan, kebersihan, dan keindahan aspek fisik SDN KEJURON.',
     whatsapp: '6281234567902',
-    instagram: 'jono_cleaning',
-    email: 'jono@kejuron.sch.id'
+    instagram: 'hamim_clean',
+    email: 'hamim@kejuron.sch.id'
   }
 ];
 
@@ -143,7 +163,8 @@ export default function TeachersPage() {
   const filteredTeachers = teachers.filter(teacher => 
     teacher.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     teacher.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    teacher.role.toLowerCase().includes(searchTerm.toLowerCase())
+    teacher.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    teacher.detailedSubjects?.some(ds => ds.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (
@@ -222,6 +243,16 @@ export default function TeachersPage() {
                       <GraduationCap className="w-4 h-4 text-emerald-500 dark:text-pink-500" />
                       {teacher.subject}
                     </div>
+
+                    {teacher.detailedSubjects && (
+                      <div className="flex flex-wrap justify-center gap-1.5 px-2">
+                        {teacher.detailedSubjects.map((det, sIdx) => (
+                          <span key={sIdx} className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700/50 text-[9px] font-black uppercase tracking-tight text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                            {det}
+                          </span>
+                        ))}
+                      </div>
+                    )}
       
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
                       "{teacher.bio}"
@@ -237,15 +268,43 @@ export default function TeachersPage() {
                       >
                         <MessageCircle className="w-4 h-4" />
                       </a>
-                      <a 
-                        href={`https://instagram.com/${teacher.instagram}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-400 hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-pink-600 transition-colors" 
-                        title="Instagram"
-                      >
-                        <Instagram className="w-4 h-4" />
-                      </a>
+                      
+                      {teacher.instagram && (
+                        <a 
+                          href={`https://instagram.com/${teacher.instagram}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-400 hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-pink-600 transition-colors" 
+                          title="Instagram"
+                        >
+                          <Instagram className="w-4 h-4" />
+                        </a>
+                      )}
+
+                      {teacher.facebook && (
+                        <a 
+                          href={`https://facebook.com/${teacher.facebook}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 transition-colors" 
+                          title="Facebook"
+                        >
+                          <Facebook className="w-4 h-4" />
+                        </a>
+                      )}
+
+                      {teacher.linkedin && (
+                        <a 
+                          href={`https://linkedin.com/in/${teacher.linkedin}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 transition-colors" 
+                          title="LinkedIn"
+                        >
+                          <Linkedin className="w-4 h-4" />
+                        </a>
+                      )}
+
                       <a 
                         href={`mailto:${teacher.email}`} 
                         className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-600 transition-colors" 

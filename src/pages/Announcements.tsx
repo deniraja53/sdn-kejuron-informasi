@@ -144,8 +144,8 @@ export default function AnnouncementsPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple demo login
-    if (loginData.email === 'admin@kejuron.sch.id' && loginData.password === 'admin123') {
+    // User requested specific credentials
+    if (loginData.email === 'sdnkejuron13@gmail.com' && loginData.password === 'sdnkejuron041185') {
       setIsAdmin(true);
       setIsLoginDialogOpen(false);
       setLoginError(null);
@@ -375,7 +375,7 @@ export default function AnnouncementsPage() {
                 type="email"
                 value={loginData.email}
                 onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
-                placeholder="admin@kejuron.sch.id"
+                placeholder="sdnkejuron13@gmail.com"
                 className="rounded-xl border-slate-200 focus:ring-emerald-500"
                 required
               />
@@ -417,12 +417,6 @@ export default function AnnouncementsPage() {
               </Button>
             </DialogFooter>
           </form>
-          <div className="text-center">
-            <p className="text-[10px] text-slate-400 font-medium">
-              Gunakan email: <span className="text-slate-600 font-bold">admin@kejuron.sch.id</span> <br />
-              Password: <span className="text-slate-600 font-bold">admin123</span>
-            </p>
-          </div>
         </DialogContent>
       </Dialog>
 
@@ -523,141 +517,190 @@ export default function AnnouncementsPage() {
 
       {/* Announcement Detail Dialog */}
       <Dialog open={isDetailDialogOpen} onOpenChange={setIsDetailDialogOpen}>
-        <DialogContent className="max-w-5xl p-0 overflow-hidden border-none shadow-[0_0_80px_rgba(16,185,129,0.15)] bg-slate-950 sm:rounded-[2.5rem] h-[100dvh] sm:h-auto sm:max-h-[92vh]">
+        <DialogContent className="max-w-5xl p-0 overflow-hidden border-none shadow-[0_50px_150px_rgba(16,185,129,0.3)] bg-white dark:bg-slate-950 sm:rounded-[4.5rem] w-[95vw] h-auto max-h-[94vh] flex flex-col selection:bg-emerald-500 selection:text-white">
           {selectedAnnouncement && (
-            <div className="flex flex-col h-full bg-slate-950">
-              {/* Premium Announcement Header */}
-              <div className="relative flex-shrink-0 h-[25vh] sm:h-[420px] bg-gradient-to-br from-emerald-600 via-emerald-900 to-slate-950 overflow-hidden flex flex-col justify-end p-8 sm:p-14 md:p-20">
-                {/* Visual Texture */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-                <div className="absolute -top-20 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" />
+            <div className="flex flex-col h-full overflow-hidden relative">
+              {/* Dynamic Futuristic Hero */}
+              <div className="relative shrink-0 p-8 sm:p-16 md:p-24 bg-slate-900 overflow-hidden text-white">
+                {/* Layered Animated Backgrounds */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-900 to-slate-950" />
+                <div className="absolute inset-0 opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent)', backgroundSize: '50px 50px' }} />
                 
-                <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="relative z-10 space-y-6"
-                >
-                  <div className="flex flex-wrap items-center gap-3">
+                {/* Floating Glow Orbs */}
+                <div className="absolute -top-20 -left-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] animate-pulse" />
+                <div className="absolute bottom-0 right-0 w-[500px] h-32 bg-gradient-to-t from-emerald-500/10 to-transparent blur-2xl" />
+                
+                <div className="relative z-10 space-y-10">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex flex-wrap items-center gap-4"
+                  >
                     <Badge className={cn(
-                      "rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] border-none shadow-xl", 
-                      selectedAnnouncement.type === 'Penting' ? "bg-red-500 text-white animate-bounce" : "bg-emerald-500 text-white"
+                      "rounded-full px-6 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] border-none shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-xl", 
+                      selectedAnnouncement.type === 'Penting' 
+                        ? "bg-red-500 text-white" 
+                        : "bg-emerald-400 text-slate-900"
                     )}>
                       {selectedAnnouncement.type}
                     </Badge>
-                    <div className="px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[10px] font-black uppercase tracking-[0.2em] text-white/80">
-                      {selectedAnnouncement.category}
+                    <div className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-[11px] font-black uppercase tracking-[0.2em] text-white/80 flex items-center gap-2">
+                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                       INFO-DOC #{selectedAnnouncement.id.toString().padStart(4, '0')}
                     </div>
-                  </div>
-                  <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white leading-none uppercase tracking-tighter italic drop-shadow-2xl">
+                  </motion.div>
+                  
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, type: "spring", damping: 15 }}
+                    className="text-4xl sm:text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter uppercase italic drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
+                  >
                     {selectedAnnouncement.title}
-                  </h2>
-                </motion.div>
+                  </motion.h2>
+                </div>
 
-                {/* Precision Close Button */}
+                {/* Futurist Control Button */}
                 <Button
                   onClick={() => setIsDetailDialogOpen(false)}
-                  className="absolute top-6 right-6 sm:top-10 sm:right-10 z-50 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/40 backdrop-blur-xl text-white hover:bg-emerald-600 transition-all border border-white/10 group/close shadow-2xl"
+                  className="absolute top-8 right-8 sm:top-12 sm:right-12 z-50 w-14 h-14 md:w-20 md:h-20 rounded-[2rem] bg-black/40 backdrop-blur-3xl text-white hover:bg-emerald-500 hover:scale-110 hover:rotate-90 transition-all duration-500 border border-white/10 group shadow-3xl"
                 >
-                  <X className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
+                  <X className="w-8 h-8 group-hover:scale-125 transition-transform" />
                 </Button>
               </div>
               
-              <div className="flex-1 overflow-y-auto custom-scrollbar bg-slate-950 px-8 py-10 sm:px-14 sm:py-16 md:px-20 relative">
-                <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
+              {/* Immersive Scrollable Body */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar p-8 sm:p-20 bg-slate-50 dark:bg-slate-950 relative">
+                {/* Child-friendly Background Blob */}
+                <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+                
+                <div className="max-w-5xl mx-auto space-y-20 relative z-10">
                   
-                  {/* Clean Info Grid (Bento Style) */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
-                    <div className="bg-white/[0.03] p-8 rounded-[2rem] border border-white/[0.05] flex items-center gap-6 group hover:border-emerald-500/20 transition-colors">
-                      <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
-                        <Calendar className="w-7 h-7" />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-1">Diterbitkan Pada</p>
-                        <p className="text-xl font-bold text-white tracking-tight">
-                          {new Date(selectedAnnouncement.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/[0.03] p-8 rounded-[2rem] border border-white/[0.05] flex items-center gap-6 group hover:border-blue-500/20 transition-colors">
-                      <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 border border-blue-500/20">
-                        <Bell className="w-7 h-7" />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-1">Tingkat Urgensi</p>
-                        <p className="text-xl font-bold text-white tracking-tight">Informasi {selectedAnnouncement.type}</p>
-                      </div>
-                    </div>
+                  {/* Neon Bento Grid (Child-friendly Vibrant Colors) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[
+                      { 
+                        icon: Calendar, 
+                        label: 'Tanggal Rilis', 
+                        value: new Date(selectedAnnouncement.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+                        color: 'emerald',
+                        delay: 0.2
+                      },
+                      { 
+                        icon: Filter, 
+                        label: 'Kategori Info', 
+                        value: selectedAnnouncement.category,
+                        color: 'violet',
+                        delay: 0.3
+                      },
+                      { 
+                        icon: Bell, 
+                        label: 'Status Sistem', 
+                        value: `Prioritas ${selectedAnnouncement.type}`,
+                        color: 'rose',
+                        delay: 0.4
+                      }
+                    ].map((card, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: card.delay }}
+                        className={cn(
+                          "bg-white dark:bg-slate-900 p-10 rounded-[4rem] border shadow-xl flex flex-col gap-6 group cursor-default transition-all duration-500",
+                          card.color === 'emerald' ? "border-emerald-100 hover:border-emerald-500/50 hover:shadow-emerald-200" :
+                          card.color === 'violet' ? "border-violet-100 hover:border-violet-500/50 hover:shadow-violet-200" :
+                          "border-rose-100 hover:border-rose-500/50 hover:shadow-rose-200"
+                        )}
+                      >
+                        <div className={cn(
+                          "w-20 h-20 rounded-[1.75rem] flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6",
+                          card.color === 'emerald' ? "bg-emerald-50 text-emerald-600" :
+                          card.color === 'violet' ? "bg-violet-50 text-violet-600" :
+                          "bg-rose-50 text-rose-600"
+                        )}>
+                          <card.icon className="w-10 h-10" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 mb-2">{card.label}</p>
+                          <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter italic uppercase">{card.value}</p>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
 
-                  {/* High Quality Typography Body */}
-                  <div className="space-y-8 sm:space-y-12">
+                  {/* Bold Editorial Content */}
+                  <div className="space-y-16">
                     <motion.div 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                      className="text-slate-200 text-xl md:text-3xl leading-relaxed font-medium tracking-tight"
-                    >
-                      {selectedAnnouncement.description}
-                    </motion.div>
-
-                    {/* Official Verification Panel */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
-                      className="p-10 rounded-[3rem] bg-gradient-to-br from-slate-900/60 to-slate-950 border border-white/5 relative overflow-hidden group shadow-2xl"
+                      className="relative p-12 border-l-[12px] border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20 rounded-r-[3rem]"
                     >
-                      <div className="absolute top-0 right-0 p-10 opacity-[0.03] rotate-12 group-hover:scale-110 transition-transform">
-                        <Save className="w-48 h-48" />
-                      </div>
-                      
-                      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-3">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                            <h4 className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.5em]">Electronic Official Verification</h4>
-                          </div>
-                          <p className="text-sm text-slate-400 leading-relaxed max-w-xl font-medium">
-                            Dokumen digital ini diterbitkan oleh <span className="text-white font-bold">Bagian Humas SDN KEJURON</span>. 
-                            Setiap informasi bersifat mengikat dan resmi untuk seluruh ekosistem sekolah.
-                          </p>
-                        </div>
-                        <div className="flex-shrink-0 flex items-center gap-4 bg-white/5 p-5 rounded-2xl border border-white/10 backdrop-blur-md">
-                          <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500">
-                            <Filter className="w-6 h-6" />
-                          </div>
-                          <div>
-                            <p className="text-[8px] font-black uppercase tracking-widest text-slate-500">Diverifikasi oleh</p>
-                            <p className="text-sm font-bold text-white">Admin Utama</p>
-                          </div>
-                        </div>
-                      </div>
+                      <p className="text-3xl sm:text-4xl text-slate-900 dark:text-emerald-50 leading-[1.3] font-bold tracking-tight italic">
+                        "{selectedAnnouncement.description}"
+                      </p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="prose prose-emerald lg:prose-xl dark:prose-invert max-w-none space-y-10 text-slate-600 dark:text-slate-400 font-medium"
+                    >
+                      <p>
+                        Informasi resmi ini diterbitkan untuk memberikan panduan yang jelas bagi seluruh warga sekolah. Kami menghargai partisipasi aktif dan kedisiplinan Bapak/Ibu sekalian dalam mengikuti arahan ini demi kepentingan bersama putra-putri kita.
+                      </p>
+                      <p>
+                        Detail teknis tambahan akan didistribusikan melalui grup komunikasi resmi sekolah. Pastikan Anda mendapatkan informasi hanya dari kanal terpercaya SDN KEJURON.
+                      </p>
                     </motion.div>
                   </div>
 
-                  {/* Footer Action Footer */}
+                  {/* Holographic Verification Badge */}
                   <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="flex flex-col sm:flex-row justify-between items-center pt-10 border-t border-white/5 gap-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="p-12 rounded-[4rem] bg-slate-900 text-white relative overflow-hidden group shadow-3xl"
                   >
-                    <div className="flex items-center gap-4 text-slate-600">
-                      <div className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center">
-                        <X className="w-3 h-3" />
+                    {/* Animated Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-transparent to-blue-500/20 opacity-50 group-hover:animate-pulse" />
+                    <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white/5 rotate-45 transform group-hover:translate-x-full transition-transform duration-1000" />
+                    
+                    <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+                      <div className="space-y-6 text-center md:text-left">
+                        <div className="flex items-center justify-center md:justify-start gap-4">
+                          <div className="px-4 py-2 bg-emerald-500/20 rounded-xl border border-emerald-500/40 flex items-center gap-2">
+                             <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_15px_rgba(52,211,153,0.8)]" />
+                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">Authentic School Doc</span>
+                          </div>
+                        </div>
+                        <p className="text-lg text-slate-300 font-medium max-w-2xl leading-relaxed">
+                          Sertifikat digital ini membuktikan bahwa pengumuman diterbitkan oleh <span className="text-white font-black underline decoration-emerald-500 decoration-4 underline-offset-4">Otoritas Digital SDN KEJURON</span>. 
+                        </p>
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.3em]">End of Official Document</span>
+                      
+                      <div className="flex -space-x-4">
+                         {['A', 'S', 'K'].map((x, i) => (
+                           <div key={i} className="w-16 h-16 rounded-[1.5rem] border-4 border-slate-900 bg-emerald-500 flex items-center justify-center text-xl font-black text-white shadow-2xl rotate-6 group-hover:rotate-12 transition-transform">
+                             {x}
+                           </div>
+                         ))}
+                      </div>
                     </div>
+                  </motion.div>
+
+                  {/* Futuristic Close Button */}
+                  <div className="flex justify-center pt-10">
                     <Button 
                       onClick={() => setIsDetailDialogOpen(false)}
-                      className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl px-16 h-20 font-black uppercase tracking-[0.3em] text-xs shadow-2xl transition-all active:scale-95 group/btn"
+                      className="group bg-emerald-600 hover:bg-emerald-500 text-white rounded-[2rem] px-20 h-24 font-black uppercase tracking-[0.5em] text-sm shadow-[0_20px_50px_rgba(16,185,129,0.3)] transition-all hover:scale-105 active:scale-95 gap-6 border-b-8 border-emerald-800"
                     >
-                      Konfirmasi Baca
-                      <ArrowRight className="ml-4 w-6 h-6 transition-transform group-hover/btn:translate-x-3" />
+                      Mengerti & Tutup
+                      <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-4" />
                     </Button>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

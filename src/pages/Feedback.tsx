@@ -12,7 +12,7 @@ export default function FeedbackPage() {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -22,27 +22,50 @@ export default function FeedbackPage() {
     const email = (form.querySelector('input[type="email"]') as HTMLInputElement)?.value || 'Tidak dicantumkan';
     const message = (form.querySelector('textarea') as HTMLTextAreaElement)?.value || '';
 
-    // Build mailto
-    const adminEmail = 'admin@kejuron.sch.id';
-    const subject = `Kritik & Saran dari ${name}`;
-    const body = `Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`;
-    
-    // Construct the mailto URL
-    const mailtoUrl = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
 
-    // Simulate API call and then open mailto
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors', // Apps Script handles no-cors well for simple appends
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formType: 'feedback',
+            name: isAnonymous ? 'Anonim' : name,
+            email: isAnonymous ? 'N/A' : email,
+            message: message
+          }),
+        });
+
+        setIsLoading(false);
+        setIsSubmitted(true);
+        
+        // Reset after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } catch (error) {
+        console.error('Submission failed:', error);
+        setIsLoading(false);
+        alert('Maaf, pengiriman gagal. Silakan coba lagi nanti.');
+      }
+    } else {
+      // Fallback to mailto if no webhook configured
+      const adminEmail = 'admin@kejuron.sch.id';
+      const subject = `Kritik & Saran dari ${name}`;
+      const body = `Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`;
+      const mailtoUrl = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      // Open mailto in new tab/window
-      window.location.href = mailtoUrl;
-
-      // Reset after 5 seconds
       setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+        setIsLoading(false);
+        setIsSubmitted(true);
+        window.location.href = mailtoUrl;
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }, 1000);
+    }
   };
 
   return (

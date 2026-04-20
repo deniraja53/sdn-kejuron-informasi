@@ -22,13 +22,45 @@ export function PPDBModal({ isOpen, onOpenChange }: PPDBModalProps) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 2000);
+
+    const form = e.target as HTMLFormElement;
+    const formData = {
+      formType: 'ppdb',
+      childName: (form.querySelector('input[placeholder="Masukkan nama..."]') as HTMLInputElement)?.value,
+      pob: (form.querySelector('input[placeholder="Kota..."]') as HTMLInputElement)?.value,
+      dob: (form.querySelector('input[type="date"]') as HTMLInputElement)?.value,
+      parentName: (form.querySelector('input[placeholder="Nama wali..."]') as HTMLInputElement)?.value,
+      whatsapp: (form.querySelector('input[placeholder="08xxxxxxxxxx"]') as HTMLInputElement)?.value,
+      email: (form.querySelector('input[type="email"]') as HTMLInputElement)?.value,
+    };
+
+    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
+
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        setIsSubmitting(false);
+        setIsSuccess(true);
+      } catch (error) {
+        console.error('PPDB Submission failed:', error);
+        setIsSubmitting(false);
+        alert('Maaf, pendaftaran gagal. Silakan hubungi admin sekolah melalui WhatsApp.');
+      }
+    } else {
+      // Fallback delay if no webhook
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+      }, 1500);
+    }
   };
 
   const reset = () => {
