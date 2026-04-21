@@ -648,252 +648,183 @@ export default function AnnouncementsPage() {
 
       {/* Announcement Detail Dialog */}
       <Dialog open={isDetailDialogOpen} onOpenChange={setIsDetailDialogOpen}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden border-none shadow-2xl bg-white dark:bg-slate-950 rounded-[2rem] md:rounded-[3rem] w-[95vw] sm:w-full max-h-[95vh] flex flex-col">
+        <DialogContent 
+          showCloseButton={false}
+          className="sm:max-w-4xl p-0 overflow-hidden border-none shadow-2xl bg-white dark:bg-slate-950 rounded-[1.5rem] md:rounded-[3rem] w-[95vw] sm:w-full max-h-[92vh] flex flex-col focus:outline-none"
+        >
           {selectedAnnouncement && (
-            <div className="flex flex-col min-h-0 relative">
-              {/* Vibrant School Header */}
-              <div className="relative shrink-0 p-6 sm:p-10 md:p-14 bg-emerald-600 dark:bg-emerald-900 overflow-hidden text-white min-h-[160px] md:min-h-[280px] flex flex-col justify-end">
+            <div className="flex flex-col min-h-0 h-full relative">
+              {/* Vibrant School Header - Optimized Height & Spacing */}
+              <div className="relative shrink-0 p-6 sm:p-10 md:p-12 bg-emerald-600 dark:bg-emerald-900 overflow-hidden text-white flex flex-col justify-end min-h-[130px] md:min-h-[240px]">
                 {/* Background Patterns */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-emerald-700 to-emerald-900 opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-emerald-700 to-emerald-900 opacity-95" />
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '16px 16px' }} />
                 
-                {/* Decorative Blobs */}
+                {/* Decorative Elements */}
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-0 right-0 w-64 h-32 bg-white/10 blur-2xl" />
+                <div className="absolute -bottom-10 -right-10 w-64 h-32 bg-white/10 blur-2xl" />
                 
-                <div className="relative z-10 space-y-3 sm:space-y-4">
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="flex flex-wrap items-center gap-2"
-                  >
-                    <Badge variant="secondary" className="rounded-full px-3 sm:px-4 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-black uppercase tracking-widest bg-white text-emerald-700 hover:bg-white shadow-xl">
+                <div className="relative z-10 space-y-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge variant="secondary" className="rounded-full px-3 py-0.5 text-[8px] md:text-[10px] font-black uppercase tracking-widest bg-white text-emerald-700 border-none shadow-lg">
                       {selectedAnnouncement.type}
                     </Badge>
-                    <Badge variant="outline" className="rounded-full px-3 sm:px-4 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-black uppercase tracking-widest border-white/40 text-white backdrop-blur-md">
+                    <Badge variant="outline" className="rounded-full px-3 py-0.5 text-[8px] md:text-[10px] font-black uppercase tracking-widest border-white/30 text-white backdrop-blur-sm">
                       {selectedAnnouncement.category}
                     </Badge>
-                  </motion.div>
+                  </div>
                   
-                  <DialogHeader className="p-0 text-left min-w-0">
+                  <DialogHeader className="p-0 text-left">
                     <DialogTitle className="sr-only">
                       {selectedAnnouncement.title}
                     </DialogTitle>
-                    <motion.h2 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="text-xl sm:text-3xl md:text-5xl font-black leading-tight sm:leading-[1.1] tracking-tight text-white drop-shadow-xl break-words relative z-10 overflow-hidden"
-                    >
+                    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black leading-tight sm:leading-[1.1] tracking-tight text-white drop-shadow-lg break-words max-w-full">
                       {selectedAnnouncement.title}
-                    </motion.h2>
+                    </h2>
                   </DialogHeader>
                 </div>
 
                 <Button
                   onClick={() => setIsDetailDialogOpen(false)}
                   variant="ghost"
-                  className="absolute top-4 right-4 z-50 w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-xl text-white hover:bg-white/30 transition-all border border-white/20 flex items-center justify-center p-0"
-                  aria-label="Close"
+                  className="absolute top-4 right-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-all border border-white/10 flex items-center justify-center p-0"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 md:w-6 md:h-6" />
                 </Button>
               </div>
               
-              {/* Immersive Scrollable Body */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-950 p-5 sm:p-10 md:p-16">
-                <div className="max-w-4xl mx-auto space-y-10 md:space-y-16">
+              {/* Content Body - Bulletproof Padding & Spacing */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950 p-5 sm:p-8 md:p-12 lg:p-16">
+                <div className="max-w-3xl mx-auto space-y-8 md:space-y-12">
                   
-                  {/* Info Cards Row (Bento Style) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex items-center gap-5 group hover:shadow-xl hover:border-emerald-100 transition-all duration-300"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 transition-transform group-hover:scale-110 group-hover:rotate-6 shrink-0 shadow-inner">
-                        <Calendar className="w-6 h-6" />
+                  {/* Meta Info Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                      <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
+                        <Calendar className="w-5 h-5" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 mb-1">Diterbitkan</p>
-                        <p className="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight leading-tight uppercase italic break-words">
-                          {new Date(selectedAnnouncement.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.25 }}
-                      className="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex items-center gap-5 group hover:shadow-xl hover:border-violet-100 transition-all duration-300"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-violet-50 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 transition-transform group-hover:scale-110 group-hover:rotate-6 shrink-0 shadow-inner">
-                        <Filter className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 mb-1">Kanal Info</p>
-                        <p className="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight leading-tight uppercase italic break-words">
-                          {selectedAnnouncement.category}
-                        </p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex items-center gap-5 group hover:shadow-xl hover:border-rose-100 transition-all duration-300 sm:col-span-2 lg:col-span-1"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 transition-transform group-hover:scale-110 group-hover:rotate-6 shrink-0 shadow-inner">
-                        <Bell className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 mb-1">Urgensi</p>
-                        <p className="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight leading-tight uppercase italic break-words">
-                          {selectedAnnouncement.type}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Body Content Section */}
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start text-left">
-                    
-                    {/* Left: Main text content (8 cols) */}
-                    <div className="lg:col-span-8 space-y-8">
-                      <div className="relative group">
-                        <div className="absolute -left-4 md:-left-8 top-0 bottom-0 w-1.5 bg-emerald-500 rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-                        <div className="space-y-6">
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600">
-                              <Info className="w-4 h-4" />
-                            </div>
-                            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400">Pesan Pengumuman</h4>
-                          </div>
-                          
-                          <div className="space-y-6">
-                            <p className="text-base sm:text-xl md:text-2xl text-slate-800 dark:text-slate-200 leading-relaxed md:leading-[1.7] font-medium tracking-tight whitespace-pre-wrap break-words overflow-hidden selection:bg-emerald-100 selection:text-emerald-900 w-full">
-                              {selectedAnnouncement.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Notes Section */}
-                      <div className="pt-8 grid grid-cols-1 gap-5">
-                        <div className="p-6 bg-slate-100/50 dark:bg-slate-900/50 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 flex gap-4">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0 animate-pulse" />
-                          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium italic">
-                            Informasi ini diterbitkan untuk memberikan panduan yang jelas bagi seluruh warga sekolah SDN KEJURON demi kepentingan bersama.
-                          </p>
-                        </div>
+                      <div className="min-w-0">
+                        <span className="block text-[8px] font-black uppercase tracking-widest text-slate-400">Post</span>
+                        <span className="block text-xs font-bold text-slate-700 dark:text-slate-200 truncate">{new Date(selectedAnnouncement.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                       </div>
                     </div>
+                    <div className="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                      <div className="w-10 h-10 bg-violet-50 dark:bg-violet-900/30 rounded-xl flex items-center justify-center text-violet-600 shrink-0">
+                        <Tag className="w-5 h-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="block text-[8px] font-black uppercase tracking-widest text-slate-400">Kanal</span>
+                        <span className="block text-xs font-bold text-slate-700 dark:text-slate-200 truncate">{selectedAnnouncement.category}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                      <div className="w-10 h-10 bg-rose-50 dark:bg-rose-900/30 rounded-xl flex items-center justify-center text-rose-600 shrink-0">
+                        <Bell className="w-5 h-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="block text-[8px] font-black uppercase tracking-widest text-slate-400">Status</span>
+                        <span className="block text-xs font-bold text-slate-700 dark:text-slate-200 truncate">{selectedAnnouncement.type}</span>
+                      </div>
+                    </div>
+                  </div>
 
-                    {/* Right: Event Logistics & Agenda (4 cols) */}
-                    {(selectedAnnouncement.details) && (
-                      <div className="lg:col-span-4 space-y-6">
-                        {/* Event Details Card */}
-                        {(selectedAnnouncement.details.location || selectedAnnouncement.details.time || selectedAnnouncement.details.contact) && (
-                          <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-                            <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">Detail Kejadian</h5>
-                            
-                            <div className="space-y-6">
-                              {selectedAnnouncement.details.location && (
-                                <div className="space-y-2">
-                                  <div className="flex items-center gap-2 text-emerald-600">
-                                    <MapPin className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Lokasi</span>
-                                  </div>
-                                  <p className="text-sm font-bold text-slate-700 dark:text-slate-200 pl-6">{selectedAnnouncement.details.location}</p>
-                                </div>
-                              )}
+                  {/* Description Section */}
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-3 text-emerald-600">
+                      <Info className="w-5 h-5" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em]">Pesan Utama</h4>
+                    </div>
+                    <div className="text-slate-700 dark:text-slate-300 text-sm md:text-lg lg:text-xl leading-relaxed md:leading-[1.8] font-medium whitespace-pre-wrap break-words">
+                      {selectedAnnouncement.description}
+                    </div>
+                  </div>
 
-                              {selectedAnnouncement.details.time && (
-                                <div className="space-y-2">
-                                  <div className="flex items-center gap-2 text-violet-600">
-                                    <Clock className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Waktu</span>
-                                  </div>
-                                  <p className="text-sm font-bold text-slate-700 dark:text-slate-200 pl-6">{selectedAnnouncement.details.time}</p>
-                                </div>
-                              )}
-
-                              {selectedAnnouncement.details.contact && (
-                                <div className="space-y-2">
-                                  <div className="flex items-center gap-2 text-rose-600">
-                                    <Phone className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Narahubung</span>
-                                  </div>
-                                  <p className="text-sm font-bold text-slate-700 dark:text-slate-200 pl-6">{selectedAnnouncement.details.contact}</p>
-                                </div>
-                              )}
+                  {/* Dynamic Details (Timeline, Location, etc) */}
+                  {selectedAnnouncement.details && (
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 border-t border-slate-100 dark:border-slate-800">
+                      
+                      {/* Technical Specs */}
+                      <div className="md:col-span-5 space-y-6">
+                        <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Logistik & Narahubung</h5>
+                        <div className="space-y-4">
+                          {selectedAnnouncement.details.location && (
+                            <div className="flex gap-4">
+                              <MapPin className="w-4 h-4 text-emerald-500 shrink-0 mt-1" />
+                              <div>
+                                <span className="block text-[10px] font-black text-slate-400 uppercase">Lokasi</span>
+                                <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{selectedAnnouncement.details.location}</span>
+                              </div>
                             </div>
-                          </div>
-                        )}
-
-                        {/* Agenda Card */}
-                        {selectedAnnouncement.details.agenda && selectedAnnouncement.details.agenda.length > 0 && (
-                          <div className="bg-emerald-600 p-8 rounded-[2.5rem] text-white shadow-xl shadow-emerald-200/20 space-y-6">
-                            <div className="flex items-center gap-3 border-b border-white/20 pb-4">
-                              <ListChecks className="w-6 h-6 text-emerald-200" />
-                              <h5 className="text-xs font-black uppercase tracking-[0.2em]">Agenda Utama</h5>
+                          )}
+                          {selectedAnnouncement.details.time && (
+                            <div className="flex gap-4">
+                              <Clock className="w-4 h-4 text-violet-500 shrink-0 mt-1" />
+                              <div>
+                                <span className="block text-[10px] font-black text-slate-400 uppercase">Waktu</span>
+                                <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{selectedAnnouncement.details.time}</span>
+                              </div>
                             </div>
+                          )}
+                          {selectedAnnouncement.details.contact && (
+                            <div className="flex gap-4">
+                              <Phone className="w-4 h-4 text-rose-500 shrink-0 mt-1" />
+                              <div>
+                                <span className="block text-[10px] font-black text-slate-400 uppercase">Kontak</span>
+                                <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{selectedAnnouncement.details.contact}</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Agenda/List Section */}
+                      {selectedAnnouncement.details.agenda && (
+                        <div className="md:col-span-7 space-y-6">
+                          <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Agenda Kegiatan</h5>
+                          <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] p-6 space-y-4">
                             <ul className="space-y-4">
                               {selectedAnnouncement.details.agenda.map((item: string, i: number) => (
-                                <li key={i} className="flex items-start gap-4 transition-transform hover:translate-x-1 duration-200">
-                                  <div className="w-6 h-6 rounded-lg bg-white/20 flex items-center justify-center text-[10px] font-black text-white shrink-0 mt-0.5 border border-white/10">
+                                <li key={i} className="flex gap-4 group">
+                                  <div className="w-6 h-6 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-[10px] font-black text-emerald-600 shrink-0">
                                     {i + 1}
                                   </div>
-                                  <span className="text-sm font-medium leading-relaxed opacity-95">{item}</span>
+                                  <span className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed group-hover:text-emerald-600 transition-colors">{item}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Certification Footer (Modern Styled) */}
-                  <div className="relative group overflow-hidden rounded-[3rem] shadow-2xl">
-                    <div className="absolute inset-0 bg-slate-900" />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-transparent to-rose-500/10 opacity-60 pointer-events-none" />
-                    
-                    <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row justify-between items-center gap-8">
-                      <div className="space-y-4 text-center md:text-left">
-                        <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-emerald-500/20 rounded-full border border-emerald-500/30 backdrop-blur-md">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-emerald-400">Rilis Resmi Digital</span>
                         </div>
-                        <p className="text-base md:text-lg text-slate-300 font-bold max-w-lg leading-relaxed">
-                          Diterbitkan secara resmi oleh <span className="text-white font-black underline decoration-emerald-500 decoration-2 underline-offset-8">Sistem Informasi SDN KEJURON</span> untuk transparansi publik.
+                      )}
+                    </div>
+                  )}
+
+                  {/* Clean Footer Info */}
+                  <div className="p-8 bg-slate-900 rounded-[2.5rem] relative overflow-hidden text-center md:text-left">
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-transparent pointer-events-none" />
+                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="space-y-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 rounded-full border border-emerald-500/30">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                          <span className="text-[8px] font-black uppercase tracking-widest text-emerald-400">Verifikasi Sekolah</span>
+                        </div>
+                        <p className="text-xs md:text-sm text-slate-400 font-bold">
+                          Diterbitkan oleh <span className="text-emerald-400">Sistem Informasi Digital SDN KEJURON</span>.
                         </p>
                       </div>
-                      
-                      <div className="flex flex-col items-center md:items-end gap-3 text-right">
-                        <div className="font-mono text-[10px] text-emerald-500 bg-black/40 px-5 py-2.5 rounded-2xl backdrop-blur-md border border-white/5 shadow-inner flex items-center gap-3">
-                          <span className="opacity-40 select-none">DOC-ID</span> 
-                          <span className="font-black tracking-widest">{selectedAnnouncement.id.toString().padStart(5, '0')}-2024</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-slate-500">
-                          <Globe className="w-3 h-3" />
-                          sdnkejuron.sch.id
-                        </div>
+                      <div className="text-[10px] font-mono text-emerald-500 bg-black/40 px-4 py-2 rounded-xl border border-white/5 uppercase tracking-widest leading-none">
+                        Ref: ID-{selectedAnnouncement.id.toString().padStart(4, '0')}
                       </div>
                     </div>
                   </div>
 
-                  {/* Large Action Button */}
-                  <div className="flex justify-center pt-4 mb-4">
+                  {/* Big Final Close Button */}
+                  <div className="flex justify-center pb-8">
                     <Button 
                       onClick={() => setIsDetailDialogOpen(false)}
-                      className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white rounded-[2rem] px-8 md:px-14 h-14 md:h-20 text-base md:text-lg font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_15px_40px_rgba(16,185,129,0.3)] gap-4 border-b-4 md:border-b-8 border-emerald-800"
+                      className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-16 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-emerald-200/20 gap-3"
                     >
-                      Selesai Membaca
-                      <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+                      Tutup Pengumuman
+                      <ArrowRight className="w-5 h-5" />
                     </Button>
                   </div>
                 </div>
