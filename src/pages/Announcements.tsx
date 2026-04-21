@@ -773,9 +773,11 @@ export default function AnnouncementsPage() {
                             <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400">Pesan Pengumuman</h4>
                           </div>
                           
-                          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 dark:text-slate-200 leading-relaxed md:leading-[1.7] font-medium tracking-tight whitespace-pre-line break-words selection:bg-emerald-100 selection:text-emerald-900">
-                            {selectedAnnouncement.description}
-                          </p>
+                          <div className="space-y-6">
+                            <p className="text-base sm:text-xl md:text-2xl text-slate-800 dark:text-slate-200 leading-relaxed md:leading-[1.7] font-medium tracking-tight whitespace-pre-wrap break-words overflow-hidden selection:bg-emerald-100 selection:text-emerald-900 w-full">
+                              {selectedAnnouncement.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
 
