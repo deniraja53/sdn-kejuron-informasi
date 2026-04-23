@@ -5,15 +5,12 @@ git init
 git remote remove origin >nul 2>&1
 git remote add origin https://github.com/sdnkejuron/website.git
 
-echo Mengambil update terbaru dari GitHub...
-git pull origin main --rebase
-
-echo Menambahkan perubahan lokal...
+echo Menyiapkan semua file...
 git add .
-git commit -m "Update website config and files"
+git commit -m "Initial Deployment and Configuration"
 
-echo Mengunggah ke GitHub...
-git push -u origin main
+echo Mengunggah ke GitHub secara paksa...
+git push -u origin main --force
 
-echo Selesai!
+echo Selesai! Sekarang cek tab Actions di GitHub Anda.
 pause
