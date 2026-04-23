@@ -1,12 +1,10 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" alt="SDN KEJURON Banner" src="https://drive.google.com/uc?export=view&id=1Gxt20xQefedddPCHGFR0AjlsmRPYjJa7" />
 </div>
 
-# Run and deploy your AI Studio app
+# SDN KEJURON - Website Resmi
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/72212288-e9c5-450e-8a49-aa5fba0379a3
+Website resmi SDN KEJURON yang dibangun dengan teknologi modern untuk memberikan informasi futuristik tentang sekolah, pendaftaran siswa baru (PPDB), dan profil tenaga pengajar.
 
 ## Run Locally
 
