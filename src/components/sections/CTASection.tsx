@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone } from 'lucide-react';
 
@@ -9,15 +10,13 @@ export function CTASection() {
         Daftarkan putra-putri Anda sekarang untuk mendapatkan pengalaman belajar terbaik.
       </p>
       <div className="flex flex-col w-full gap-3">
-        <Button 
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('open-ppdb'));
-          }}
-          className="bg-primary text-white hover:bg-primary/80 rounded-xl font-black uppercase tracking-widest py-6 h-auto w-full shadow-[0_20px_40px_rgba(255,0,127,0.3)] text-xs cursor-pointer"
+        <Link 
+          to="/ppdb"
+          className="bg-primary text-white hover:bg-primary/80 rounded-xl font-black uppercase tracking-widest flex items-center justify-center py-6 h-auto w-full shadow-[0_20px_40px_rgba(255,0,127,0.3)] text-xs transition-all active:scale-95"
         >
           Daftar Sekarang
           <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
+        </Link>
         <Button variant="outline" className="border-2 border-primary/30 bg-black/40 text-white hover:bg-primary/10 rounded-xl font-black uppercase tracking-widest py-6 h-auto w-full text-xs">
           <Phone className="mr-2 w-4 h-4" />
           Hubungi Kami

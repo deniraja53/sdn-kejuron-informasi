@@ -92,12 +92,12 @@ export function Navbar() {
               </Link>
             ))}
             
-            <Button 
-              onClick={() => setIsPPDBOpen(true)}
-              className="ml-4 bg-primary hover:bg-primary/80 rounded-xl px-6 h-10 shadow-[0_0_20px_rgba(255,0,127,0.4)] text-xs font-black uppercase tracking-widest pointer-events-auto"
+            <Link 
+              to="/ppdb"
+              className="ml-4 bg-primary hover:bg-primary/80 rounded-xl px-6 h-10 shadow-[0_0_20px_rgba(255,0,127,0.4)] text-[10px] font-black uppercase tracking-widest pointer-events-auto flex items-center justify-center text-white"
             >
               PPDB Online
-            </Button>
+            </Link>
           </div>
           
           {/* Toggle spacer - StaggeredMenu handles the toggle */}

@@ -16,6 +16,7 @@ import ContactPage from '@/pages/Contact';
 import FeedbackPage from '@/pages/Feedback';
 import LandingPage from '@/pages/Landing';
 import AboutUsPage from '@/pages/AboutUs';
+import PPDBPage from '@/pages/PPDB';
 
 function AppContent() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function AppContent() {
           <Route path="/pengumuman" element={<AnnouncementsPage />} />
           <Route path="/kontak" element={<ContactPage />} />
           <Route path="/kritik-saran" element={<FeedbackPage />} />
+          <Route path="/ppdb" element={<PPDBPage />} />
           {/* Fallback to Home for other routes */}
           <Route path="*" element={<Home />} />
         </Routes>

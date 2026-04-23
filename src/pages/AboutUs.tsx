@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Building2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const values = [
   {
@@ -280,14 +281,12 @@ const AboutUs = () => {
               Temukan cara kami mengasahnya menjadi permata yang cemerlang.
             </p>
             <div className="pt-8">
-              <button
-                onClick={() => {
-                  window.dispatchEvent(new CustomEvent("open-ppdb"));
-                }}
-                className="bg-primary hover:bg-primary/80 text-white rounded-2xl px-16 h-20 font-black uppercase tracking-[0.3em] text-[10px] shadow-[0_20px_50px_rgba(255,0,127,0.4)] transition-all active:scale-95 group cursor-pointer pointer-events-auto"
+              <Link
+                to="/ppdb"
+                className="inline-flex items-center justify-center bg-primary hover:bg-primary/80 text-white rounded-2xl px-16 h-20 font-black uppercase tracking-[0.3em] text-[10px] shadow-[0_20px_50px_rgba(255,0,127,0.4)] transition-all active:scale-95 group"
               >
                 Mulai Pendaftaran
-              </button>
+              </Link>
             </div>
           </motion.div>
         </section>
