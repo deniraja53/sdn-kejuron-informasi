@@ -10,8 +10,10 @@ export function CTASection() {
       </p>
       <div className="flex flex-col w-full gap-3">
         <Button 
-          onClick={() => window.dispatchEvent(new CustomEvent('open-ppdb'))}
-          className="bg-primary text-white hover:bg-primary/80 rounded-xl font-black uppercase tracking-widest py-6 h-auto w-full shadow-[0_0_20px_rgba(255,0,127,0.4)] text-xs"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('open-ppdb'));
+          }}
+          className="bg-primary text-white hover:bg-primary/80 rounded-xl font-black uppercase tracking-widest py-6 h-auto w-full shadow-[0_20px_40px_rgba(255,0,127,0.3)] text-xs cursor-pointer"
         >
           Daftar Sekarang
           <ArrowRight className="ml-2 w-4 h-4" />
