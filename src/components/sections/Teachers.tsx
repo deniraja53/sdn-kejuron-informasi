@@ -14,7 +14,7 @@ const teachers = [
   {
     name: "Angga Wida Witdiyanto, S.Pd",
     role: "Guru Kelas 6",
-    image: "assets/profil/angga.jpg",
+    image: "assets/profil/angga.JPG",
     bio: "Membimbing tantangan masa depan dengan semangat.",
     email: "angga@kejuron.sch.id",
     whatsapp: "6281234567891",
@@ -36,7 +36,7 @@ export function Teachers() {
           <div key={idx} className="flex flex-col gap-3 p-5 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 group hover:border-emerald-500 transition-all">
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-lg border-2 border-white dark:border-slate-800">
-                <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" referrerPolicy="no-referrer" />
+                <img src={`${import.meta.env.BASE_URL}${teacher.image}`} alt={teacher.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" referrerPolicy="no-referrer" />
               </div>
               <div className="min-w-0">
                 <div className="text-sm font-black text-slate-900 dark:text-white leading-tight uppercase tracking-tight truncate">{teacher.name}</div>
