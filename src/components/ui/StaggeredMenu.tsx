@@ -1,7 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Link, useNavigate } from 'react-router-dom';
-import { School } from 'lucide-react';
 import './StaggeredMenu.css';
 
 interface StaggeredMenuItem {
@@ -411,8 +410,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             />
           ) : (
             <Link to="/home" className="text-emerald-600 font-extrabold text-xl flex items-center gap-3">
-              <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-200">
-                <School className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-emerald-600">SDN</span>

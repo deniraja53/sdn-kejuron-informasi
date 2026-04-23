@@ -85,7 +85,7 @@ export default function ContactPage() {
               <p className="text-pink-700 dark:text-pink-400 text-sm">Hubungi tim administrasi kami langsung melalui WhatsApp.</p>
             </div>
             <Button 
-              className="bg-pink-600 hover:bg-pink-700 text-white rounded-2xl px-8 py-6 h-auto shadow-lg shadow-pink-200 gap-3 font-bold text-lg"
+              className="bg-pink-600 hover:bg-pink-700 text-white rounded-2xl px-8 py-6 h-auto gap-3 font-bold text-lg"
               onClick={() => window.open('https://wa.me/6281234567890', '_blank')}
             >
               <MessageCircle className="w-6 h-6" />

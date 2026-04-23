@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 
 const teachers = [
   {
-    name: 'Juli Sugianingsih, S.Pd',
-    role: 'Kepala Sekolah',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Memimpin dengan visi global dan kehangatan hati.',
-    email: 'juli@kejuron.sch.id',
-    whatsapp: '6281234567890'
+    name: "Juli Sugianingsih, S.Pd",
+    role: "Kepala Sekolah",
+    image: "assets/profil/juli1.jpg",
+    bio: "Memimpin dengan visi global dan kehangatan hati.",
+    email: "juli@kejuron.sch.id",
+    whatsapp: "6281234567890",
   },
   {
-    name: 'Angga Wida Witdiyanto, S.Pd',
-    role: 'Guru Kelas 6',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop',
-    bio: 'Membimbing tantangan masa depan dengan semangat.',
-    email: 'angga@kejuron.sch.id',
-    whatsapp: '6281234567891'
-  }
+    name: "Angga Wida Witdiyanto, S.Pd",
+    role: "Guru Kelas 6",
+    image: "assets/profil/angga.jpg",
+    bio: "Membimbing tantangan masa depan dengan semangat.",
+    email: "angga@kejuron.sch.id",
+    whatsapp: "6281234567891",
+  },
 ];
 
 export function Teachers() {

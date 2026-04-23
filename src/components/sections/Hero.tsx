@@ -1,14 +1,14 @@
-import { motion, useScroll, useTransform } from 'motion/react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from "motion/react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
@@ -16,7 +16,7 @@ export function Hero() {
   const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="bento-card h-full bg-gradient-to-br from-black via-slate-950 to-pink-950 text-white border-2 border-primary/40 justify-center overflow-hidden p-8 md:p-12"
     >
@@ -26,33 +26,50 @@ export function Hero() {
         transition={{ duration: 0.6 }}
         className="relative z-10"
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-6"
+        >
+          <img 
+            src="/assets/logo.png" 
+            alt="Logo SDN KEJURON" 
+            className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
+          />
+        </motion.div>
+
         <div className="bento-pill">
           <div className="flex items-center gap-2">
             <Sparkles className="w-3 h-3 text-accent" />
-            <span className="text-primary">Cyber Primary School</span>
+            <span className="text-primary">
+              SELAMAT DATANG di INFORMASI SEKOLAH
+            </span>
           </div>
         </div>
         <h1 className="text-3xl md:text-5xl font-black leading-[1.1] mb-4 tracking-tighter">
-          MEMBANGUN GENERASI <span className="text-primary">CERDAS</span> DAN <span className="text-accent">BERKARAKTER</span>
+          MEMBANGUN GENERASI <span className="text-primary">CERDAS</span> DAN{" "}
+          <span className="text-accent">BERKARAKTER</span>
         </h1>
         <p className="text-sm md:text-base opacity-70 max-w-md leading-relaxed mb-8 font-medium">
-          Pendidikan dasar modern dengan sentuhan futuristik, menciptakan pemimpin masa depan yang unggul dalam ilmu dan akhlak.
+          Pendidikan dasar modern dengan informasi futuristik, menciptakan
+          peserta didik yang Berkarakter, Inovasi, & Berprestasi.
         </p>
         <div className="flex flex-wrap gap-4">
           <motion.div
-            animate={{ 
+            animate={{
               scale: [1, 1.02, 1],
             }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
           >
-            <Button 
+            <Button
               render={<Link to="/profil" />}
               nativeButton={false}
-              size="lg" 
+              size="lg"
               className="bg-primary text-white hover:bg-primary/80 rounded-xl font-black px-6 py-4 h-auto shadow-[0_0_30px_rgba(255,0,127,0.3)] group relative overflow-hidden uppercase tracking-widest text-xs"
             >
               <span className="relative z-10 flex items-center">
@@ -60,51 +77,51 @@ export function Hero() {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
               {/* Hover Gradient Sweep */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full z-0"
-                whileHover={{ x: '200%' }}
+                whileHover={{ x: "200%" }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               />
             </Button>
           </motion.div>
 
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, -3, 0],
             }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
           >
-            <Button 
+            <Button
               render={<Link to="/kontak" />}
               nativeButton={false}
-              size="lg" 
-              variant="outline" 
+              size="lg"
+              variant="outline"
               className="border-2 border-accent/60 text-accent hover:bg-accent/10 rounded-xl font-black px-6 py-4 h-auto backdrop-blur-sm group relative overflow-hidden uppercase tracking-widest text-xs"
             >
               <span className="relative z-10">Hubungi Kami</span>
               {/* Hover Gradient Sweep */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent -translate-x-full z-0"
-                whileHover={{ x: '200%' }}
+                whileHover={{ x: "200%" }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               />
             </Button>
           </motion.div>
         </div>
       </motion.div>
-      
+
       {/* Decorative background elements with parallax */}
-      <motion.div 
+      <motion.div
         style={{ y: y1, rotate: rotate1 }}
-        className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" 
+        className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"
       />
-      <motion.div 
+      <motion.div
         style={{ y: y2 }}
-        className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" 
+        className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"
       />
 
       {/* Sharp Corner Accents */}
