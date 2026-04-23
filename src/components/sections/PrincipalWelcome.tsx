@@ -7,7 +7,7 @@ export function PrincipalWelcome() {
     <div className="bento-card h-full flex flex-col gap-6 items-center text-center">
       <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden flex-shrink-0 shadow-xl shadow-primary/20 border-2 border-primary/40">
         <img
-          src="/assets/profil/juli1.jpg"
+          src={`${import.meta.env.BASE_URL}assets/profil/juli1.jpg`}
           alt="Kepala Sekolah"
           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
           referrerPolicy="no-referrer"

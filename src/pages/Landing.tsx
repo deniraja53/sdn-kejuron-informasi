@@ -65,7 +65,7 @@ export default function LandingPage() {
             className="flex justify-center mb-6"
           >
             <img
-              src="/assets/logo.png"
+              src={`${import.meta.env.BASE_URL}assets/logo.png`}
               alt="Logo SDN KEJURON"
               className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
             />

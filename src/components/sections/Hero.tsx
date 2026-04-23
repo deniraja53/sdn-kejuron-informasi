@@ -33,7 +33,7 @@ export function Hero() {
           className="mb-6"
         >
           <img 
-            src="/assets/logo.png" 
+            src={`${import.meta.env.BASE_URL}assets/logo.png`} 
             alt="Logo SDN KEJURON" 
             className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
           />

@@ -284,7 +284,7 @@ export default function TeachersPage() {
                       <div className="absolute inset-0 bg-emerald-500 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-40 transition-opacity" />
                       <div className="relative w-32 h-32 rounded-[2.5rem] border-4 border-white dark:border-slate-800 overflow-hidden bg-white dark:bg-slate-900 shadow-2xl">
                         <img 
-                          src={teacher.image} 
+                          src={`${import.meta.env.BASE_URL}${teacher.image}`} 
                           alt={teacher.name} 
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                           referrerPolicy="no-referrer"

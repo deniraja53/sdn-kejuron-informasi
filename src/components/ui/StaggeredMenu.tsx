@@ -411,7 +411,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           ) : (
             <Link to="/home" className="text-emerald-600 font-extrabold text-xl flex items-center gap-3">
               <div className="w-10 h-10 flex items-center justify-center">
-                <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                <img src={`${import.meta.env.BASE_URL}assets/logo.png`} alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-emerald-600">SDN</span>
