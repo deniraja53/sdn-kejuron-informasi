@@ -285,7 +285,7 @@ const AboutUs = () => {
                 to="/ppdb"
                 className="inline-flex items-center justify-center bg-primary hover:bg-primary/80 text-white rounded-2xl px-16 h-20 font-black uppercase tracking-[0.3em] text-[10px] shadow-[0_20px_50px_rgba(255,0,127,0.4)] transition-all active:scale-95 group"
               >
-                Mulai Pendaftaran
+                TERIMA KASIH
               </Link>
             </div>
           </motion.div>

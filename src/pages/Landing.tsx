@@ -99,7 +99,7 @@ export default function LandingPage() {
             className="group relative overflow-hidden bg-primary text-white hover:bg-primary/80 rounded-2xl px-12 py-10 h-auto text-xl font-black shadow-[0_0_50px_rgba(255,0,127,0.5)] transition-all active:scale-95 uppercase tracking-widest"
           >
             <span className="relative z-10 flex items-center gap-3">
-              Masuk ke Website
+              Kunjungi Kami
               <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
             </span>
 
