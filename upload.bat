@@ -8,15 +8,20 @@ echo ==========================================
 
 echo [1/3] Menyiapkan Git...
 git init
+git config user.name "sdnkejuron"
+git config user.email "sdnkejuron13@gmail.com"
 git remote remove origin >nul 2>&1
 git remote add origin https://github.com/sdnkejuron/website.git
 
 echo [2/3] Mengunggah file ke GitHub...
-git add .
-git commit -m "Deploy: Update configuration and assets"
+git add -A
+git commit -m "Deploy: Force Update %date% %time%"
 git push -u origin main --force
 
 echo [3/3] Selesai! 
+echo.
+echo Status terakhir:
+git status -s
 echo.
 echo PENTING: 
 echo 1. Pastikan di GitHub Settings > Pages, "Source" diatur ke "GitHub Actions".
