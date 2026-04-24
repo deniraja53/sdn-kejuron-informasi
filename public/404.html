@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SDN KEJURON</title>
+    <script type="text/javascript">
+        // Redirect 404 to index.html for Single Page Application
+        // This handles refreshes on sub-routes
+        var path = window.location.pathname;
+        var base = '/website/';
+        if (!path.startsWith(base)) {
+            window.location.href = base;
+        } else {
+            // Keep the path if possible or just redirect to base
+            // For now, let's just redirect to the main base to ensure it works
+            window.location.href = base;
+        }
+    </script>
+</head>
+<body>
+    Redirecting to home...
+</body>
+</html>
