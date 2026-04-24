@@ -34,11 +34,10 @@ export function LatestAnnouncement() {
         </div>
       </div>
       <h3 className="text-sm font-black text-white mb-2 uppercase tracking-tighter">
-        PPDB 2024/2025 Dibuka
+        PPDB 2026/2026 Dibuka
       </h3>
       <p className="text-xs text-slate-300 line-clamp-2 font-medium">
-        Segera daftarkan putra-putri Anda untuk mendapatkan kuota terbatas dan
-        potongan biaya.
+        Segera daftarkan putra-putri Anda untuk mendapatkan kuota terbatas.
       </p>
     </div>
   );

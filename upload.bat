@@ -3,33 +3,39 @@ setlocal
 cd /d "d:\dunlutan\kejuron web"
 
 echo ==========================================
-echo    SDN KEJURON - GITHUB DEPLOYMENT
+echo    SDN KEJURON - MANUAL DEPLOYMENT
 echo ==========================================
 
-echo [1/3] Menyiapkan Git...
+echo [1/4] Membangun website (Build)...
+call npm run build
+
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo ERROR: Gagal membangun website. Pastikan Node.js sudah terinstal.
+    pause
+    exit /b %ERRORLEVEL%
+)
+
+echo [2/4] Menyiapkan folder hasil build...
+cd dist
+echo > .nojekyll
+
+echo [3/4] Mengunggah hasil build ke GitHub...
 git init
-echo Isi folder saat ini:
-dir /b
 git config user.name "sdnkejuron"
 git config user.email "sdnkejuron13@gmail.com"
-git remote remove origin >nul 2>&1
-git remote add origin https://github.com/sdnkejuron/website.git
-
-echo [2/3] Mengunggah file ke GitHub...
 git add -A
-git commit -m "Deploy: Force Update %date% %time%"
-git push -u origin main --force
+git commit -m "Manual Deploy %date% %time%"
+git push -f https://github.com/sdnkejuron/website.git HEAD:gh-pages
 
-echo [3/3] Selesai! 
+echo [4/4] Selesai!
 echo.
-echo Status terakhir:
-git status -s
+echo PENTING:
+echo 1. Pergi ke GitHub Settings > Pages.
+echo 2. Ubah Source ke "Deploy from a branch".
+echo 3. Pilih branch "gh-pages" dan folder "/(root)".
+echo 4. Klik SAVE.
 echo.
-echo PENTING: 
-echo 1. Pastikan di GitHub Settings > Pages, "Source" diatur ke "GitHub Actions".
-echo 2. Cek tab "Actions" di GitHub untuk melihat proses build.
-echo 3. Tunggu 1-2 menit setelah Actions selesai (hijau).
-echo.
-echo URL Anda: https://sdnkejuron.github.io/website/
+echo URL: https://sdnkejuron.github.io/website/
 echo.
 pause

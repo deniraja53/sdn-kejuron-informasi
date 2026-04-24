@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import Hyperspeed from '@/components/ui/Hyperspeed';
@@ -12,7 +13,7 @@ export default function LandingPage() {
       {/* Hyperspeed Background */}
       <div className="absolute inset-0 z-0">
         <Hyperspeed
-          effectOptions={{
+          effectOptions={useMemo(() => ({
             distortion: "turbulentDistortion",
             length: 400,
             roadWidth: 10,
@@ -27,15 +28,15 @@ export default function LandingPage() {
             shoulderLinesWidthPercentage: 0.05,
             brokenLinesWidthPercentage: 0.1,
             brokenLinesLengthPercentage: 0.5,
-            lightStickWidth: [0.12, 0.5],
-            lightStickHeight: [1.3, 1.7],
-            movingAwaySpeed: [60, 80],
-            movingCloserSpeed: [-120, -160],
-            carLightsLength: [12, 80],
-            carLightsRadius: [0.05, 0.14],
-            carWidthPercentage: [0.3, 0.5],
-            carShiftX: [-0.8, 0.8],
-            carFloorSeparation: [0, 5],
+            lightStickWidth: [0.12, 0.5] as [number, number],
+            lightStickHeight: [1.3, 1.7] as [number, number],
+            movingAwaySpeed: [60, 80] as [number, number],
+            movingCloserSpeed: [-120, -160] as [number, number],
+            carLightsLength: [12, 80] as [number, number],
+            carLightsRadius: [0.05, 0.14] as [number, number],
+            carWidthPercentage: [0.3, 0.5] as [number, number],
+            carShiftX: [-0.8, 0.8] as [number, number],
+            carFloorSeparation: [0, 5] as [number, number],
             colors: {
               roadColor: 0x080808,
               islandColor: 0x0a0a0a,
@@ -46,7 +47,7 @@ export default function LandingPage() {
               rightCars: [0x00f3ff, 0x00f3ff, 0x00f3ff],
               sticks: 0x00f3ff,
             },
-          }}
+          }), [])}
         />
       </div>
 

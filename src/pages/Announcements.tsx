@@ -6,46 +6,54 @@ import { cn } from '@/lib/utils';
 const initialAnnouncements = [
   {
     id: 1,
-    title: 'Pendaftaran Peserta Didik Baru (PPDB) Tahun Ajaran 2024/2025',
-    date: '2024-04-10',
-    description: 'Penerimaan siswa baru telah dibuka. Segera daftarkan putra-putri Anda untuk mendapatkan pendidikan terbaik dengan kurikulum modern.',
+    title: "Pendaftaran Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027",
+    date: "2024-07-10",
+    description:
+      "Penerimaan siswa baru telah dibuka. Segera daftarkan putra-putri Anda untuk mendapatkan pendidikan terbaik dengan kurikulum modern.",
     details: {
-      location: 'Kantor Tata Usaha SDN KEJURON',
-      time: '08:00 - 14:00 WIB',
-      agenda: ['Pengambilan Formulir', 'Verifikasi Dokumen', 'Wawancara Orang Tua', 'Tes Kematangan Siswa'],
-      contact: 'Ibu Ratna (0812-3456-7890)'
+      location: "Kantor Tata Usaha SDN KEJURON",
+      time: "08:00 - 14:00 WIB",
+      agenda: [
+        "Pengambilan Formulir",
+        "Verifikasi Dokumen",
+        "Wawancara Orang Tua",
+        "Tes Kematangan Siswa",
+      ],
+      contact: "Ibu Ratna (0812-3456-7890)",
     },
-    type: 'Penting',
-    category: 'Akademik'
+    type: "Penting",
+    category: "Akademik",
   },
   {
     id: 2,
-    title: 'Libur Hari Raya Idul Fitri 1445 H',
-    date: '2024-04-05',
-    description: 'Sesuai dengan kalender pendidikan, kegiatan belajar mengajar akan libur mulai tanggal 8 April hingga 15 April 2024.',
+    title: "Libur Hari Raya Idul Fitri 1445 H",
+    date: "2024-04-05",
+    description:
+      "Sesuai dengan kalender pendidikan, kegiatan belajar mengajar akan libur mulai tanggal 8 April hingga 15 April 2024.",
     details: {
-      location: 'Rumah Masing-masing',
-      time: 'Selama 8 Hari',
-      agenda: ['Cuti Bersama', 'Libur Lebaran', 'Kembali Masuk: 16 April 2024'],
-      contact: 'Sekretariat Sekolah'
+      location: "Rumah Masing-masing",
+      time: "Selama 8 Hari",
+      agenda: ["Cuti Bersama", "Libur Lebaran", "Kembali Masuk: 16 April 2024"],
+      contact: "Sekretariat Sekolah",
     },
-    type: 'Umum',
-    category: 'Kegiatan'
+    type: "Umum",
+    category: "Kegiatan",
   },
   {
     id: 3,
-    title: 'Workshop Teknologi Informasi & AI untuk Siswa',
-    date: '2024-03-28',
-    description: 'Mengenalkan dunia teknologi masa depan kepada siswa-siswi melalui praktik langsung penggunaan AI sederhana.',
+    title: "Workshop Teknologi Informasi & AI untuk Siswa",
+    date: "2024-03-28",
+    description:
+      "Mengenalkan dunia teknologi masa depan kepada siswa-siswi melalui praktik langsung penggunaan AI sederhana.",
     details: {
-      location: 'Laboratorium Komputer',
-      time: '09:00 - 12:00 WIB',
-      agenda: ['Pengenalan AI', 'Demo Robotika', 'Sesi Kreativitas Digital'],
-      contact: 'Pak Andi (IT Dept)'
+      location: "Laboratorium Komputer",
+      time: "09:00 - 12:00 WIB",
+      agenda: ["Pengenalan AI", "Demo Robotika", "Sesi Kreativitas Digital"],
+      contact: "Pak Andi (IT Dept)",
     },
-    type: 'Umum',
-    category: 'Kegiatan'
-  }
+    type: "Umum",
+    category: "Kegiatan",
+  },
 ];
 
 export default function AnnouncementsPage() {
@@ -166,7 +174,7 @@ export default function AnnouncementsPage() {
       )}
 
       {/* Cyber Header */}
-      <div className="text-center space-y-6">
+      <div className="text-center space-y-8">
         <div className="flex flex-col items-center gap-6">
           <div 
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] border border-primary/30 shadow-[0_0_15px_rgba(255,0,127,0.1)] cursor-pointer select-none"

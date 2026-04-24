@@ -76,7 +76,7 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router basename="/website">
+    <Router basename={import.meta.env.BASE_URL}>
       <AppContent />
     </Router>
   );

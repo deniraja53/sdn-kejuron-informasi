@@ -1212,6 +1212,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
       return needResize;
     }
 
+    let isMounted = true;
     const container = hyperspeed.current;
     if (!container) return;
 
@@ -1224,13 +1225,15 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }: { effectOptions?
 
     const myApp = new App(container, options);
     appRef.current = myApp;
+    
     myApp.loadAssets().then(() => {
-      if (!myApp.disposed) {
+      if (isMounted && !myApp.disposed) {
         myApp.init();
       }
     });
 
     return () => {
+      isMounted = false;
       if (appRef.current) {
         appRef.current.dispose();
         appRef.current = null;

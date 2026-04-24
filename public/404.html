@@ -6,13 +6,11 @@
     <script type="text/javascript">
         // Redirect 404 to index.html for Single Page Application
         // This handles refreshes on sub-routes
-        var path = window.location.pathname;
         var base = '/website/';
-        if (!path.startsWith(base)) {
-            window.location.href = base;
-        } else {
-            // Keep the path if possible or just redirect to base
-            // For now, let's just redirect to the main base to ensure it works
+        var path = window.location.pathname;
+        
+        // Only redirect if we are not already at the base path or if we are at a sub-route that needs handling
+        if (path !== base && path !== base + 'index.html') {
             window.location.href = base;
         }
     </script>
