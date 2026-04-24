@@ -3,6 +3,8 @@
 </div>
 
 # SDN KEJURON - Website Resmi
+Last update: 2026-04-24 11:29 AM
+
 
 Website resmi SDN KEJURON yang dibangun dengan teknologi modern untuk memberikan informasi futuristik tentang sekolah, pendaftaran siswa baru (PPDB), dan profil tenaga pengajar.
 
