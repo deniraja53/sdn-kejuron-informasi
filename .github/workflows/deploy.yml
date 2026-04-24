@@ -1,4 +1,6 @@
-name: Deploy to GitHub Pages
+name: Automated Site Deployment
+
+# Updated: 2026-04-24 11:48 AM
 
 on:
   push:
