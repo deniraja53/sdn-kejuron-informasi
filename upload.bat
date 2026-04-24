@@ -8,6 +8,8 @@ echo ==========================================
 
 echo [1/3] Menyiapkan Git...
 git init
+echo Isi folder saat ini:
+dir /b
 git config user.name "sdnkejuron"
 git config user.email "sdnkejuron13@gmail.com"
 git remote remove origin >nul 2>&1
