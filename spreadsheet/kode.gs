@@ -2,7 +2,7 @@
  * SDN KEJURON - Form Integration Script (Google Sheets + Email Alert)
  */
 
-var ADMIN_EMAIL = "sdnkejuron13@gmail.com";
+var ADMIN_EMAIL = "sdnkejuron13@gmail.com"; "deniraja53@guru.sd.belajar.id";
 
 function doPost(e) {
   try {
