@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { GraduationCap, User, Phone, Mail, BookOpen, Clock, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, User, Phone, Mail, BookOpen, Clock, CheckCircle2, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface PPDBModalProps {
@@ -71,7 +71,15 @@ export function PPDBModal({ isOpen, onOpenChange }: PPDBModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-xl rounded-[2.5rem] p-0 overflow-hidden border-none shadow-2xl bg-slate-950 text-white">
+      <DialogContent className="max-w-xl rounded-[2.5rem] p-0 overflow-hidden border-none shadow-2xl bg-slate-950 text-white relative">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={() => onOpenChange(false)}
+          className="absolute right-6 top-6 z-[60] w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 hover:text-white transition-all backdrop-blur-sm"
+        >
+          <X className="w-5 h-5" />
+        </Button>
         <AnimatePresence mode="wait">
           {!isSuccess ? (
             <motion.div
