@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" alt="SDN KEJURON Banner" src="https://sites.google.com/guru.sd.belajar.id/logo-sdn-kejuron-kota-madiun/home" />
+<img width="1200" alt="SDN KEJURON Banner" src="https://drive.google.com/file/d/1Rr6d67-fp1ZmYteBPKIYJ30-oe7ZQilw/view?usp=drive_link" />
 </div>
 
 # SDN KEJURON - Website Resmi
